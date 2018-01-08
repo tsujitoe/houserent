@@ -14,5 +14,5 @@ import os
 from django.core.wsgi import get_wsgi_application
 from dj_static import Cling
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "lunch.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "houserent.settings")
 application = Cling(get_wsgi_application())     # 注意這一行。

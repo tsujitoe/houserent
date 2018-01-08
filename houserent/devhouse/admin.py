@@ -20,7 +20,7 @@ class Dvenifoadmin(admin.ModelAdmin):
 		}]
 	)
 	search_fields = ('dev_phone',)
-	list_filter = ('state',)
+	list_filter = ('state', 'dev_date',)
 	list_editable = ('state',)
 	list_display_links = ('dev_name',)
 	list_per_page = 20

@@ -38,7 +38,7 @@ class Suites(models.Model):
 class Rooms(models.Model):
 	room_address=models.ForeignKey(Suites, on_delete=models.SET_NULL, blank=True, null=True, related_name='rooms')
 	room_fullrent=models.BooleanField(verbose_name='可租狀態', default=True)
-	room_number=models.CharField(verbose_name='房號', max_length=10, blank=True, null=True)
+	room_number=models.CharField(verbose_name='房號', max_length=10, default='X')
 	room_rent=models.PositiveIntegerField(verbose_name='價位', blank=True, null=True)
 	room_description=models.CharField(verbose_name='其他優點', default=' ', blank=True, null=True, max_length=50)
 	class Meta:
