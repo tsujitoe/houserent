@@ -147,30 +147,14 @@ MEDIA_URL = '/media/'
 
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
+from django.core.exceptions import ImproperlyConfigured
 
-
-
-# Parse database configuration from $DATABASE_URL
-
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
-# Enable Persistent Connections
-
-DATABASES['default']['CONN_MAX_AGE'] = 500
-# Honor the 'X-Forwarded-Proto' header for request.is_secure()
-
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-# Allow all host headers
-
-ALLOWED_HOSTS = ['*']
-
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-
-try:
-    from .local_setting import *
-except Exception as e:
-    pass
+def get_env_var(key):
+    try:
+        return os.environ[key]
+    except KeyError:
+        raise ImproperlyConfigured(
+            'Environment variable {key} required.'.format(key=key)
+        )
