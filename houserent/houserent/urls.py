@@ -25,11 +25,10 @@ from pages.views import home
 
 
 urlpatterns = [
-	url(r'^$', home, name='home'), # name=是餵給templates
+	url(r'^$', home, name='home'),
     
 	url(r'^suite/', include('suite.urls')),
     url(r'^devhouse/', include('devhouse.urls')),
-    url(r'^filer/', include('filer.urls')),
 
     # 2.0 和 1.8 差別在url & path
 	url(r'^admin/', include(admin.site.urls)),

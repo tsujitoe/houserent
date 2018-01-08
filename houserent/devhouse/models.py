@@ -21,7 +21,8 @@ class Devinfo(models.Model):
 	dev_screenshot = models.ImageField(verbose_name='網頁截圖', upload_to='dev-phone', blank=True, null=True ,max_length=100)
 	dev_note = models.TextField(verbose_name='開發紀錄', default=' ', blank=True, null=True)
 	dev_tracetime = models.DateField(verbose_name='追蹤時間', blank=True, null=True)
-
+	class Meta:
+		verbose_name_plural='開發資訊'
 	def image_tag(self):
 		if self.dev_phone_img :
 			return u'<img src="%s" width="100px" />' % self.dev_phone_img.url

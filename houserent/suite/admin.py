@@ -13,6 +13,9 @@ class PhotoInline(admin.StackedInline):
 
 @admin.register(Suites)
 class Suiteadmin(admin.ModelAdmin):
+	search_fields = ('suite_address',)
 	inlines = (RoomInline, PhotoInline, )
+	list_per_page = 20
+
 
 # admin.site.register(Suites)

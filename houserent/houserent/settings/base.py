@@ -30,10 +30,6 @@ INSTALLED_APPS = [
 
     'crispy_forms',
 
-    'easy_thumbnails',
-    'filer',
-    'mptt',
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -57,6 +53,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+MIDDLEWARE_CLASSES = (
+    # Simplified static file serving.
+    # https://warehouse.python.org/project/whitenoise/
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    )
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorag'
 
 ROOT_URLCONF = 'houserent.urls'
 
@@ -84,17 +88,7 @@ TEMPLATES = [
         },
     },
 ]
-BOOTSTRAP_ADMIN_SIDEBAR_MENU = True
 
-
-THUMBNAIL_PROCESSORS = (
-    'easy_thumbnails.processors.colorspace',
-    'easy_thumbnails.processors.autocrop',
-    #'easy_thumbnails.processors.scale_and_crop',
-    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
-    'easy_thumbnails.processors.filters',
-)
-THUMBNAIL_HIGH_RESOLUTION = True
 
 WSGI_APPLICATION = 'houserent.wsgi.application'
 
@@ -145,9 +139,20 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+"""
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+"""
 
 from django.core.exceptions import ImproperlyConfigured
 

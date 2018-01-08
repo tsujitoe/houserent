@@ -3,9 +3,9 @@
 from __future__ import unicode_literals
 
 from django.conf import settings
-from django.db import migrations
+from django.db import migrations, models
 import django.db.models.deletion
-import filer.fields.image
+#import filer.fields.image
 
 
 class Migration(migrations.Migration):
@@ -18,6 +18,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='suitephoto',
             name='p_image',
-            field=filer.fields.image.FilerImageField(on_delete=django.db.models.deletion.CASCADE, to=settings.FILER_IMAGE_MODEL),
+            field=models.ImageField(blank=True, null=True, upload_to='suite_photos/%Y-%m-%d/', verbose_name='照片'),
         ),
     ]
