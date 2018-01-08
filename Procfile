@@ -1,1 +1,1 @@
-web: gunicorn lunch.wsgi --log-file -
+web: gunicorn houserent.wsgi --log-file -
