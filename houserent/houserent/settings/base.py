@@ -146,3 +146,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = '/media/'
 
 STATIC_URL = '/static/'
+
+
+from django.core.exceptions import ImproperlyConfigured
+
+def get_env_var(key):
+    try:
+        return os.environ[key]
+    except KeyError:
+        raise ImproperlyConfigured(
+            'Environment variable {key} required.'.format(key=key)
+        )
