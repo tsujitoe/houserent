@@ -1,0 +1,26 @@
+{# suite/templates/suite_update.html #}
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+{% load static %}
+
+{% block title %}更新 {{ suite.suite_address }} | {{ block.super }}{% endblock title %}
+
+
+{% block js %}
+{{ block.super }}
+{% endblock js %}
+
+{% block content %}
+
+
+<form method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	{{ photo_form.as_p }}
+	
+	<button type="submit">Upload</button>
+</form>
+
+
+{% endblock content %}

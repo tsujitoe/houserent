@@ -1,0 +1,27 @@
+from django.contrib import admin
+
+# Register your models here.
+from .models import Devinfo
+
+from django.utils.safestring import mark_safe
+
+@admin.register(Devinfo)
+class Dvenifoadmin(admin.ModelAdmin):
+
+	list_display = ('state', 'dev_tracetime','dev_name','dev_phone','image_tag',
+		'dev_address','dev_rent', 'dev_date','url_tag',)
+	fieldsets = (
+		['Main',{
+		'fields':('state', 'dev_tracetime','dev_name', 'dev_phone','dev_phone_img'),
+		}],
+		['其他資訊',{
+		'classes': ('collapse',),
+		'fields':('dev_note', 'dev_address','dev_rent'),
+		}]
+	)
+	search_fields = ('dev_phone',)
+	list_filter = ('state',)
+	list_editable = ('state',)
+	list_display_links = ('dev_name',)
+	list_per_page = 20
+	#readonly_fields = ('image_tag',)
