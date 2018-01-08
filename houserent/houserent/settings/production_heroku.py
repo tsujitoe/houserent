@@ -6,6 +6,7 @@ DEBUG = False
 
 # 設定 secret key。
 SECRET_KEY = get_env_var('DJANGO_SECRET_KEY')
+DJANGO_SECRET_KEY = 'j0@^%7*-_#1p+r8id(o@r=zuq4ts%66_aii)jjax3'
 
 # 尊重 HTTPS 連線中的 "X-Forwarded-Proto" header。
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
