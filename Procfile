@@ -1,1 +1,1 @@
-web: gunicorn houserent.wsgi --log-file -
+web: waitress-serve --port=$PORT houserent.wsgi:application
