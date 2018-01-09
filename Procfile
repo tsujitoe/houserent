@@ -1,1 +1,1 @@
-web: gunicorn houserent.wsgi --log-file -
+web: gunicorn --pythonpath houserent houserent.wsgi
