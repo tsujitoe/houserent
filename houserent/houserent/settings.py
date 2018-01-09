@@ -13,12 +13,6 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 from django.core.exceptions import ImproperlyConfigured
 
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-
-
 def get_env_var(key):
     try:
         return os.environ[key]
@@ -27,14 +21,27 @@ def get_env_var(key):
             'Environment variable {key} required.'.format(key=key)
         )
 
+# 設定 secret key。
+SECRET_KEY = get_env_var('DJANGO_SECRET_KEY')
+
+# 尊重 HTTPS 連線中的 "X-Forwarded-Proto" header。
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+# SECURITY WARNING: don't run with debug turned on in production!
+#SECRET_KEY = ')j87lqt&fr*#4m(i8*jz*6$jkjg4jt*z%su#nfb=&p0zg$kzsf'
+DEBUG = False
+ALLOWED_HOSTS = ['*']
+
 
 # Application definition
 
 INSTALLED_APPS = [
 
     'crispy_forms',
-
-    
+   
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -59,11 +66,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-MIDDLEWARE_CLASSES = (
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    )
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = 'houserent.urls'
 
@@ -107,6 +109,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -154,29 +157,3 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
 # Extra places for collectstatic to find static files.
 #STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-
-import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env
-
-
-import dj_database_url
-
-# 把 debug 模式關掉。
-DEBUG = False
-
-# 設定 secret key。
-SECRET_KEY = get_env_var('DJANGO_SECRET_KEY')
-#DJANGO_SECRET_KEY = 'j0@^%7*-_#1p+r8id(o@r=zuq4ts%66_aii)jjax3'
-#SECRET_KEY = 'j0@^%7*-_#1p+r8id(o@r=zuq4ts%66_aii)jjax3'
-
-# 尊重 HTTPS 連線中的 "X-Forwarded-Proto" header。
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-# 設定資料庫。
-DATABASES = {
-    'default': dj_database_url.config()
-}
-
-# 允許所有網址連至本網站。
-ALLOWED_HOSTS = ['*']

@@ -1,3 +1,5 @@
+
+"""
 from .base import *     # noqa
 import dj_database_url
 
@@ -22,3 +24,4 @@ DATABASES = {
 
 # 允許所有網址連至本網站。
 ALLOWED_HOSTS = ['*']
+"""

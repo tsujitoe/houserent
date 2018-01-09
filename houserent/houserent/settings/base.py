@@ -17,25 +17,13 @@ from django.core.exceptions import ImproperlyConfigured
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-
-
-def get_env_var(key):
-    try:
-        return os.environ[key]
-    except KeyError:
-        raise ImproperlyConfigured(
-            'Environment variable {key} required.'.format(key=key)
-        )
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
+SECRET_KEY = ')j87lqt&fr*#4m(i8*jz*6$jkjg4jt*z%su#nfb=&p0zg$kzsf'
 DEBUG = True
-
 ALLOWED_HOSTS = []
-
-
 
 
 # Application definition
@@ -43,8 +31,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
 
     'crispy_forms',
-
-    
+   
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -69,11 +56,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-MIDDLEWARE_CLASSES = (
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    )
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = 'houserent.urls'
 
@@ -117,6 +99,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -164,7 +147,3 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
 # Extra places for collectstatic to find static files.
 #STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-
-import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)

@@ -75,6 +75,4 @@ if [ -n "${BASH:-}" -o -n "${ZSH_VERSION:-}" ] ; then
     hash -r
 fi
 
-
-export DJANGO_SETTINGS_MODULE=houserent.settings.local
 alias phantomjs='/Users/tsujitoe-mac/program/Python/houserent/houserent/statics/node_modules/phantomjs/bin/phantomjs'
