@@ -1,2 +1,7 @@
 *.py[co]
+*.pyc
+__pycache__
 __pycache__git
+myvenv
+db.sqlite3
+.DS_Store

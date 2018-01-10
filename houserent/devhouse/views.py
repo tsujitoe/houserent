@@ -64,17 +64,17 @@ def get_work(request, pk):
 	img_temp = NamedTemporaryFile(delete=True)
 	img_temp.write(imgraw.content)
 	img_temp.flush()
-	
+
 	dev_house.dev_phone_img.save('%s.png'%(filename_phone),File(img_temp), save=True)
-	# 電話圖片轉數數字
-	dev_house.image2number
-	
-	
 	#f = open('%s.png' % (filename_phone), 'wb')
 	#dev_house.dev_phone_img=shutil.copyfileobj(imgraw.raw, f)
 	#shutil.copyfileobj(imgraw.raw, f)
 	#shutil.move()
 	#f.close
+
+	# 電話圖片轉數數字
+	#dev_house.image2number
+	
 	del imgraw
 
 	#網頁全圖
