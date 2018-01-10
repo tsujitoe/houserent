@@ -80,11 +80,13 @@ def get_work(request, pk):
 	del imgraw
 	
 	#電話圖片轉文字
-	image = Image.open("media/%s"%(dev_house.dev_phone_img))
-	number = pytesseract.image_to_string(image).replace(" ","")
-	dev_house.dev_phone = number
-
-	dev_house.save()
+	try:
+		image = Image.open("media/%s"%(dev_house.dev_phone_img))
+		number = pytesseract.image_to_string(image).replace(" ","")
+		dev_house.dev_phone = number
+		dev_house.save()
+	except:
+		pass
 
 	#網頁全圖
 
