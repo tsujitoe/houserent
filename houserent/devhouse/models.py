@@ -15,7 +15,7 @@ class Devinfo(models.Model):
 	)
 	dev_date = models.DateField(verbose_name='搜集時間', auto_now_add=True)
 	state = models.CharField(verbose_name='狀態', choices=state_items, default='未打' ,max_length=20)
-	dev_url = models.CharField(verbose_name='網址', blank=True, null=True  ,max_length=100)
+	dev_url = models.CharField(verbose_name='網址', blank=True, null=True, unique=True, max_length=100)
 	dev_zone = models.CharField(verbose_name='區域', blank=True, null=True ,max_length=10)
 	dev_address = models.CharField(verbose_name='地址', blank=True, null=True ,max_length=100)
 	dev_rent = models.CharField(verbose_name='租金', blank=True, null=True ,max_length=50)
