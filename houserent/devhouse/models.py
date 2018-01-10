@@ -2,8 +2,6 @@ from django.db import models
 from django.core.urlresolvers import reverse #Django1.8.8
 # Create your models here.
 
-import pytesseract
-from PIL import Image
 
 
 

@@ -15,6 +15,9 @@ import requests
 from django.core.files import File
 from django.core.files.temp import NamedTemporaryFile
 
+import pytesseract
+from PIL import Image
+
 
 
 def url_dev(request):
@@ -51,7 +54,10 @@ def get_work(request, pk):
 	dev_house.dev_name = soup.find("div", {"class":"avatarRight"}).find("i").text
 	dev_house.dev_address = soup.find("span", {"class":"addr"}).text
 	dev_house.dev_zone = soup.find("div", { "id" : "propNav" }).find_all("a")[3].text
-	dev_house.dev_rent =  soup.find("div", {"class":"price clearfix"}).text
+	
+	money = soup.find("div", {"class":"price clearfix"}).text
+	dev_house.dev_rent = ''.join([x for x in money if x.isdigit()])
+	
 	dev_house.save()
 
 	filename = dev_house.dev_name+'-'+dev_house.dev_address
@@ -71,11 +77,14 @@ def get_work(request, pk):
 	#shutil.copyfileobj(imgraw.raw, f)
 	#shutil.move()
 	#f.close
-
-	# 電話圖片轉數數字
-	#dev_house.image2number
-	
 	del imgraw
+	
+	#電話圖片轉文字
+	image = Image.open("../media/%s"%(dev_house.dev_phone_img))
+	number = pytesseract.image_to_string(image)
+	dev_house.dev_phone = number
+
+	dev_house.save()
 
 	#網頁全圖
 
@@ -87,6 +96,14 @@ def url_list(request, pk):
 		url = Devinfo.objects.get(pk=pk)
 	except Devinfo.DoesNotExist:
 		raise Http404
+	# 電話圖片轉數數字
+	#url.image2number
+	image = Image.open("../media/%s"%(url.dev_phone_img))
+	number = pytesseract.image_to_string(image)
+	#print(number)
+	url.dev_phone=number
+	url.save()
+
 	return render(request, 'url_list.html', {'url': url})
 
 
