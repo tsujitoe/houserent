@@ -29,7 +29,7 @@ SECRET_KEY = ')j87lqt&fr*#4m(i8*jz*6$jkjg4jt*z%su#nfb=&p0zg$kzsf'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #SECRET_KEY = ')j87lqt&fr*#4m(i8*jz*6$jkjg4jt*z%su#nfb=&p0zg$kzsf'
