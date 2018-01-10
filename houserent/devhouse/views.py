@@ -10,7 +10,11 @@ from django.http import HttpResponse
 from bs4 import BeautifulSoup
 #from selenium import webdriver
 import requests
-import shutil
+#import shutil
+
+from django.core.files import File
+from django.core.files.temp import NamedTemporaryFile
+
 
 
 def url_dev(request):
@@ -29,6 +33,11 @@ from django.core.files import File
 from django.core.files.temp import NamedTemporaryFile
 
 
+import pytesseract
+from PIL import Image
+
+
+
 def get_work(request, pk):
 	try:
 		dev_house = Devinfo.objects.get(pk=pk)
@@ -41,19 +50,26 @@ def get_work(request, pk):
 	#純文字
 	dev_house.dev_name = soup.find("div", {"class":"avatarRight"}).find("i").text
 	dev_house.dev_address = soup.find("span", {"class":"addr"}).text
+	dev_house.dev_zone = soup.find("div", { "id" : "propNav" }).find_all("a")[3].text
 	dev_house.dev_rent =  soup.find("div", {"class":"price clearfix"}).text
 	dev_house.save()
 
 	filename = dev_house.dev_name+'-'+dev_house.dev_address
 	#電話圖片
-	phone_img = soup.find("div", {"class":"infoTwo clearfix"}).find("img")['src'].split('//')[-1]			
+	phone_img = soup.find("div", {"class":"infoTwo clearfix"}).find("img")['src'].split('//')[-1]
 	img = 'https://'+phone_img
 	filename_phone = 'phone-'+filename
 	imgraw = requests.get(img, stream=True)
+	
 	img_temp = NamedTemporaryFile(delete=True)
 	img_temp.write(imgraw.content)
 	img_temp.flush()
+	
 	dev_house.dev_phone_img.save('%s.png'%(filename_phone),File(img_temp), save=True)
+	# 電話圖片轉數數字
+	dev_house.image2number
+	
+	
 	#f = open('%s.png' % (filename_phone), 'wb')
 	#dev_house.dev_phone_img=shutil.copyfileobj(imgraw.raw, f)
 	#shutil.copyfileobj(imgraw.raw, f)

@@ -22,7 +22,8 @@ def get_env_var(key):
         )
 
 # 設定 secret key。
-SECRET_KEY = get_env_var('DJANGO_SECRET_KEY')
+#SECRET_KEY = get_env_var('DJANGO_SECRET_KEY')
+SECRET_KEY = ')j87lqt&fr*#4m(i8*jz*6$jkjg4jt*z%su#nfb=&p0zg$kzsf'
 
 # 尊重 HTTPS 連線中的 "X-Forwarded-Proto" header。
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -32,7 +33,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #SECRET_KEY = ')j87lqt&fr*#4m(i8*jz*6$jkjg4jt*z%su#nfb=&p0zg$kzsf'
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
@@ -94,11 +95,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'houserent.wsgi.application'
 
+"""
 FILE_UPLOAD_HANDLERS = [
     'django.core.files.uploadhandler.MemoryFileUploadHandler',
     'django.core.files.uploadhandler.TemporaryFileUploadHandler',
 ]
-
+"""
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
