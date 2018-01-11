@@ -22,7 +22,7 @@ class Devinfo(models.Model):
 	dev_rent = models.CharField(verbose_name='租金', blank=True, null=True ,max_length=50)
 	dev_name = models.CharField(verbose_name='稱呼', blank=True, null=True ,max_length=30)
 	dev_phone = models.CharField(verbose_name='電話', blank=True, null=True ,max_length=30)
-	dev_phone_img = models.ImageField(verbose_name='電話圖', upload_to='dev-phone', null=True, blank=True)
+	dev_phone_img = models.ImageField(verbose_name='電話圖', upload_to='dev-phone', null=True)
 	dev_screenshot = models.ImageField(verbose_name='網頁截圖', upload_to='dev-phone', blank=True, null=True ,max_length=100)
 	dev_note = models.TextField(verbose_name='開發紀錄', default=' ', blank=True, null=True)
 	dev_tracetime = models.DateField(verbose_name='追蹤時間', blank=True, null=True)
@@ -39,13 +39,14 @@ class Devinfo(models.Model):
 			return u'<a href="%s" target="_blank">#</a>' % self.dev_url
 	url_tag.short_description = '連結'
 	url_tag.allow_tags = True
-
+	
+	"""
 	def image2number(self):
 		#image = Image.open('phone-可伊-台中市北屯區文心路四段.png') #圖檔名稱
 		image = Image.open("../media/%s"%(self.dev_phone_img))
 		number = pytesseract.image_to_string(image)
 		self.dev_phone=number
-
+	"""
 
 """
 	def dev_date_tag(self):	
