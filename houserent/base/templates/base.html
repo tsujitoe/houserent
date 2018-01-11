@@ -1,31 +1,67 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
 <head>
 <title>{% block title %}案件系統{% endblock title %}</title>
+ <!-- Bootstrap core CSS -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-{% load staticfiles %}
+</head>
 
 <body>
 {% block body %}
+
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
-  <div class="container">
+<div class="container"> 
+  <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">功能</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">莊周系統</a>
     </div>
-    <div>
+    <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a href="{% url 'get_url' %}">搜集資料</a></li>
-      </ul>
-    </div>
-    <div>
-      <ul class="nav navbar-nav">
-        <li><a href="../../../admin/devhouse/devinfo/">管理資料</a></li>
+        <li class="active"><a href="{% url 'home' %}">首頁</a></li>
+        <li><a href="#">掃街資訊</a></li>
+
+        <li class="dropdown">  
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">案件回報 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'suite_list' %}">套房</a></li>
+            <li><a href="#">住宅</a></li>
+            <li><a href="#">店面</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">  
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">開發系統 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../../../admin/devhouse/devinfo/">電話開發</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">搜集資料</li>
+            <li><a href="{% url 'get_url' %}">591網址</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
-    {% block javascript %}
-    {% endblock %}
+
+
+
 {% endblock body %}
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+</script>
+<script>
+window.jQuery || document.write('<script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+</script>
 </body>
-</html>

@@ -4,6 +4,7 @@ __pycache__
 __pycache__git
 
 .sqlite3
+.DS_Store
 venv
 
 houserent/db.sqlite3
