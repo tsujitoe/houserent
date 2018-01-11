@@ -79,15 +79,14 @@ def get_work(request, pk):
 	del imgraw
 	
 	#電話圖片轉文字
-	"""
 	try:
 		image = Image.open("media/%s"%(dev_house.dev_phone_img))
 		number = pytesseract.image_to_string(image).replace(" ","")
 		dev_house.dev_phone = number
 		dev_house.save()
 	except:
+		print("圖片轉成文字失敗了...")
 		pass
-	"""
 	#網頁全圖
 
 	return redirect(reverse('url_list', kwargs={'pk': pk}))		
@@ -95,7 +94,6 @@ def get_work(request, pk):
 def url_list(request, pk):
 	try:
 		url = Devinfo.objects.get(pk=pk)
-		url.image2number()
 	except Devinfo.DoesNotExist:
 		raise Http404
 	return render(request, 'url_list.html', {'url': url})
