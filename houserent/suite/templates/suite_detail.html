@@ -1,0 +1,66 @@
+{# suite/templates/suite_detail.html #}
+
+{% extends 'base.html' %}
+
+{% block title %}{{ suite.suite_address }} | {{ block.super }}{% endblock title %}
+
+{% block content %}
+
+  <h1>{{ suite.suite_address }}</h1>
+  <a href="{% url 'photos_update' pk=suite.pk %}" class="btn btn-default">照片</a>
+
+  <a href="{% url 'suite_update' pk=suite.pk %}" class="btn btn-default">更新案件資訊</a>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>如何進入案件</th><td>{{ suite.suite_how_inter_housedoor }}</td>
+      </tr>
+      <tr>
+        <th>如何進入房門</th><td>{{ suite.suite_how_inter_roomdoor }}</td>
+      </tr>
+      <tr>
+        <th>租金包含</th><td>{{ suite.suite_include }}</td>
+      </tr>
+      <tr>
+        <th>租金不包含</th><td>{{ suite.suite_no_include }}</td>
+      </tr>
+      <tr>
+        <th>電費計算</th><td>{{ suite.suite_elecfee }}</td>
+      </tr>
+      <tr>
+        <th>垃圾處理</th><td>{{ suite.suite_garbage }}</td>
+      </tr>
+      <tr>
+        <th>洗衣</th><td>{{ suite.suite_wash }}</td>
+      </tr>
+      <tr>
+        <th>飲水</th><td>{{ suite.suite_drink }}</td>
+      </tr>
+      <tr>
+        <th>限制條件</th><td>{{ suite.suite_limit }}</td>
+      </tr>
+      <tr>
+        <th>其他補充</th><td>{{ suite.suite_note }}</td>
+      </tr>
+      <tr>
+      </tr>
+    </thead>
+  </table>
+
+  <h2>目前空房</h2>
+  <a href="{% url 'rooms_update' pk=suite.pk %}" class="btn btn-default">更新空房資訊</a>
+  <table class="table">  
+    <thead>
+      <tr><th>房號</th><th>租金</th><th>其他優點</th></tr>
+    </thead>
+    <tbody>
+    {% for room in suite.rooms.all %}
+    {% if room.room_fullrent == True %}
+      <tr><td>{{ room.room_number }}</td><td>{{ room.room_rent }}</td><td>{{ room.room_description }}</td></tr>
+    {% endif %}
+    {% endfor %}
+    </tbody>
+
+
+{% endblock content %}

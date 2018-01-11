@@ -1,0 +1,10 @@
+*.py[co]
+*.pyc
+__pycache__
+__pycache__git
+
+.sqlite3
+venv
+
+houserent/db.sqlite3
+houserent/media
