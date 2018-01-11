@@ -18,6 +18,9 @@ from django.core.files.temp import NamedTemporaryFile
 import pytesseract
 from PIL import Image
 
+from django.db import IntegrityError
+
+
 
 
 def url_dev(request):
@@ -30,34 +33,30 @@ def url_dev(request):
 		form = UrlForm(submit_title='建立')
 	return render(request, 'url_create.html', {'form': form})
 
-
-
-from django.core.files import File
-from django.core.files.temp import NamedTemporaryFile
-
-
-import pytesseract
-from PIL import Image
-
-
+"""
+try:
+except UnboundLocalError:
+	return render(request, 'url_repeat.html')
+"""
 
 def get_work(request, pk):
 	try:
 		dev_house = Devinfo.objects.get(pk=pk)
 	except Devinfo.DoesNotExist:
 		raise Http404
-
+	
 	head = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36'}
 	res = requests.get(dev_house.dev_url, headers = head)
 	soup = BeautifulSoup(res.text, 'lxml')
-	#純文字
+	#純文字	
 	dev_house.dev_name = soup.find("div", {"class":"avatarRight"}).find("i").text
 	dev_house.dev_address = soup.find("span", {"class":"addr"}).text
 	dev_house.dev_zone = soup.find("div", { "id" : "propNav" }).find_all("a")[3].text
-	
+	dev_house.dev_type = soup.find("div", { "id" : "propNav" }).find_all("a")[4].text
+
 	money = soup.find("div", {"class":"price clearfix"}).text
 	dev_house.dev_rent = ''.join([x for x in money if x.isdigit()])
-	
+
 	dev_house.save()
 
 	filename = dev_house.dev_name+'-'+dev_house.dev_address
@@ -66,7 +65,7 @@ def get_work(request, pk):
 	img = 'https://'+phone_img
 	filename_phone = 'phone-'+filename
 	imgraw = requests.get(img, stream=True)
-	
+
 	img_temp = NamedTemporaryFile(delete=True)
 	img_temp.write(imgraw.content)
 	img_temp.flush()
@@ -86,12 +85,11 @@ def get_work(request, pk):
 		dev_house.dev_phone = number
 		dev_house.save()
 	except:
-		pass
 
+		pass
 	#網頁全圖
 
-	return redirect(reverse('url_list', kwargs={'pk': pk}))
-
+	return redirect(reverse('url_list', kwargs={'pk': pk}))		
 
 def url_list(request, pk):
 	try:
