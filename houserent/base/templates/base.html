@@ -29,11 +29,10 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">莊周系統</a>
+      <a class="navbar-brand" href="{% url 'home' %}">莊周系統</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="{% url 'home' %}">首頁</a></li>
 
         <li><a href="#">掃街資訊</a></li>
 
@@ -62,7 +61,7 @@
             <li><a href="../../../admin/devtenant/tenant/">房客管理(電腦版)</a></li>
             <li role="separator" class="divider"></li>
             <li class="dropdown-header">搜集資料</li>
-            <li><a href="{% url 'get_tenant' %}">房客紀錄</a></li>
+            <li><a href="{% url 'tenant_get' %}">房客紀錄</a></li>
           </ul>
         </li>
 

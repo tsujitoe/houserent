@@ -24,4 +24,4 @@ class Tenant(models.Model):
 	class Meta:
 		verbose_name_plural='房客資訊'
 	def get_absolute_url(self):
-		return reverse('list_tenant', kwargs={'pk': self.pk})
+		return reverse('tenant_list', kwargs={'pk': self.pk})
