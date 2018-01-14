@@ -22,5 +22,5 @@ class Dvenifoadmin(admin.ModelAdmin):
 	list_filter = ('state','dev_type','dev_zone','dev_date',)
 	list_editable = ('state',)
 	list_display_links = ('dev_name',)
-	list_per_page = 20
+	list_per_page = 10
 	#readonly_fields = ('image_tag',)

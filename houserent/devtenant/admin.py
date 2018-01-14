@@ -21,5 +21,5 @@ class Tenantifoadmin(admin.ModelAdmin):
 	list_filter = ('te_state','te_zone','te_tracetime','te_date',)
 	list_editable = ('te_state',)
 	list_display_links = ('te_name',)
-	list_per_page = 20
+	list_per_page = 10
 	#readonly_fields = ('image_tag',)
