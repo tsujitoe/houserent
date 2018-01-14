@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.core.urlresolvers import reverse
 from .forms import TenantForm
 from .models import Tenant
 
@@ -10,7 +11,7 @@ def get_tenant(request):
 		form = TenantForm(request.POST, submit_title='建立')
 		if form.is_valid():
 			tenant = form.save()
-			return redirect(tenant.get_absolute_url())
+			return redirect(reverse('tenant_list', kwargs={'pk': tenant.pk}))	
 	else:
 		form = TenantForm(submit_title='建立')
 	return render(request, 'tenant_create.html', {'form': form})

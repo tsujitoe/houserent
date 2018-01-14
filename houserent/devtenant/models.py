@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.urlresolvers import reverse
+
 
 # Create your models here.
 
@@ -23,5 +23,4 @@ class Tenant(models.Model):
 	te_tracetime = models.DateField(verbose_name='追蹤時間', blank=True, null=True)
 	class Meta:
 		verbose_name_plural='房客資訊'
-	def get_absolute_url(self):
-		return reverse('tenant_list', kwargs={'pk': self.pk})
+	
