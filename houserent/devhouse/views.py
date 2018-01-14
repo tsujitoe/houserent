@@ -89,7 +89,7 @@ def get_work(request, pk):
 		pass
 	#網頁全圖
 
-	return redirect(reverse('url_list', kwargs={'pk': pk}))		
+	return redirect(reverse('url_list', kwargs={'pk': pk}))	
 
 def url_list(request, pk):
 	try:

@@ -2,15 +2,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>{% block title %}案件系統{% endblock title %}</title>
- <!-- Bootstrap core CSS -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}莊周系統{% endblock title %}</title>
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <!-- blueimp Gallery styles -->
+    <link rel="stylesheet" href="{% static 'css/blueimp-gallery.min.css' %}">
+    <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+    <link rel="stylesheet" href="{% static 'css/jquery.fileupload-ui.css' %}">
+    <!-- CSS adjustments for browsers with JavaScript disabled -->
+    <noscript><link rel="stylesheet" href="{% static 'css/jquery.fileupload-ui-noscript.css' %}"></noscript>
+
+ {% block headplus %} {% endblock headplus %}
 </head>
 
 <body>
-{% block body %}
-
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
 <div class="container"> 
   <div class="container-fluid">
@@ -26,6 +34,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="active"><a href="{% url 'home' %}">首頁</a></li>
+
         <li><a href="#">掃街資訊</a></li>
 
         <li class="dropdown">  
@@ -40,28 +49,35 @@
         <li class="dropdown">  
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">開發系統 <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="../../../admin/devhouse/devinfo/">電話開發</a></li>
+            <li><a href="../../../admin/devhouse/devinfo/">電話開發(電腦版)</a></li>
             <li role="separator" class="divider"></li>
             <li class="dropdown-header">搜集資料</li>
             <li><a href="{% url 'get_url' %}">591網址</a></li>
           </ul>
         </li>
+
+        <li class="dropdown">  
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">房客資訊<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../../../admin/devtenant/tenant/">房客管理(電腦版)</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">搜集資料</li>
+            <li><a href="{% url 'get_tenant' %}">房客紀錄</a></li>
+          </ul>
+        </li>
+
+        <li><a href="{% url 'upload-new' %}">照片自由傳</a></li>
+      
       </ul>
     </div>
   </div>
 </nav>
-
-
-
+{% block body %}
 {% endblock body %}
+
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
-</script>
-<script>
-window.jQuery || document.write('<script
-  src="https://code.jquery.com/jquery-1.12.4.min.js"
-  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-  crossorigin="anonymous"></script></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
-</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
 </body>
+</html>

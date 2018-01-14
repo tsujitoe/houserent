@@ -3,8 +3,6 @@ from django.core.urlresolvers import reverse #Django1.8.8
 # Create your models here.
 
 
-
-
 class Devinfo(models.Model):
 	state_items=(
 		('未打', '未打'),
@@ -13,7 +11,7 @@ class Devinfo(models.Model):
 		('失敗', '失敗'),
 		('成功', '成功'),
 	)
-	dev_date = models.DateField(verbose_name='搜集時間', auto_now_add=True)
+	dev_date = models.DateField(verbose_name='更新時間', auto_now=True)
 	state = models.CharField(verbose_name='狀態', choices=state_items, default='未打' ,max_length=20)
 	dev_url = models.CharField(verbose_name='網址', blank=True, null=True, unique=True, max_length=100)
 	dev_zone = models.CharField(verbose_name='區域', blank=True, null=True ,max_length=10)
@@ -23,11 +21,12 @@ class Devinfo(models.Model):
 	dev_name = models.CharField(verbose_name='稱呼', blank=True, null=True ,max_length=30)
 	dev_phone = models.CharField(verbose_name='電話', blank=True, null=True ,max_length=30)
 	dev_phone_img = models.ImageField(verbose_name='電話圖', upload_to='dev-phone', null=True)
-	dev_screenshot = models.ImageField(verbose_name='網頁截圖', upload_to='dev-phone', blank=True, null=True ,max_length=100)
+	dev_screenshot_img = models.ImageField(verbose_name='網頁截圖', upload_to='dev-web', blank=True, null=True ,max_length=100)
 	dev_note = models.TextField(verbose_name='開發紀錄', default=' ', blank=True, null=True)
 	dev_tracetime = models.DateField(verbose_name='追蹤時間', blank=True, null=True)
 	class Meta:
 		verbose_name_plural='開發資訊'
+
 	def image_tag(self):
 		if self.dev_phone_img :
 			return u'<img src="%s" width="100px" />' % self.dev_phone_img.url

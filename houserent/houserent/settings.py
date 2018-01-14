@@ -54,6 +54,9 @@ INSTALLED_APPS = [
     'pages',
     'base',
     'devhouse',
+    'devtenant',
+    'devstreet',
+
     ]
 
 
@@ -157,8 +160,17 @@ MEDIA_URL = '/media/'
 
 
 
+
 STATIC_URL = '/static/'
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
+#STATIC_URL = '/static/'
+#STATIC_ROOT = os.path.dirname(os.path.dirname(os.path.join(BASE_DIR, 'static')))
+#STATICFILES_DIRS = os.path.join(BASE_DIR, "static")
+#PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 # Extra places for collectstatic to find static files.
 #STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+

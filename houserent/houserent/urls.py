@@ -16,23 +16,26 @@ Including another URLconf
 
 from django.contrib import admin
 from django.conf.urls import include, url
-# from django.urls import path
-
 from django.conf.urls.static import static
 from django.conf import settings
+from django.http import HttpResponseRedirect
 
 from pages.views import home
 
 
 urlpatterns = [
-	url(r'^$', home, name='home'),
-    
-	url(r'^suite/', include('suite.urls')),
+    url(r'^$', home, name='home'),
+    url(r'^suite/', include('suite.urls')),
+
     url(r'^devhouse/', include('devhouse.urls')),
+    url(r'^devtenant/', include('devtenant.urls')),
+
+    url(r'^devstreet/', include('devstreet.urls')),
+    #url(r'^$', lambda x: HttpResponseRedirect('/devstreet/new/')),
 
     # 2.0 和 1.8 差別在url & path
-	url(r'^admin/', include(admin.site.urls)),
-	#path('admin/', admin.site.urls),
+    url(r'^admin/', include(admin.site.urls)),
+    #path('admin/', admin.site.urls),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  

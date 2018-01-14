@@ -3,7 +3,6 @@ from django.contrib import admin
 # Register your models here.
 from .models import Devinfo
 
-from django.utils.safestring import mark_safe
 
 @admin.register(Devinfo)
 class Dvenifoadmin(admin.ModelAdmin):
