@@ -41,7 +41,10 @@ class Devinfo(models.Model):
 
 	def screen_tag(self):
 		if self.dev_url :
-			return u'<a href="%s" target="_blank">##</a>' % self.dev_screenshot_img.url
+			if self.dev_screenshot_img.url is not None:
+				return u'<a href="%s" target="_blank">##</a>' % self.dev_screenshot_img.url
+			else:
+				return u'##'
 	screen_tag.short_description = '截圖'
 	screen_tag.allow_tags = True
 	
