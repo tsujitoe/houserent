@@ -39,15 +39,18 @@ class Devinfo(models.Model):
 	url_tag.short_description = '連結'
 	url_tag.allow_tags = True
 
-	"""
 	def screen_tag(self):
-		if self.dev_screenshot_img is None:
+		try:
+			if self.dev_screenshot_img is not None:
+				return u'<a href="%s" target="_blank">##</a>' % self.dev_screenshot_img.url	
+			else:
+				return u'GG'
+		except:
 			return u'GG'
-		else:
-			return u'<a href="%s" target="_blank">##</a>' % self.dev_screenshot_img.url	
+			
 	screen_tag.short_description = '截圖'
 	screen_tag.allow_tags = True
-	"""
+	
 
 	"""
 	def image2number(self):
