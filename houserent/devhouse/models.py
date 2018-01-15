@@ -41,14 +41,14 @@ class Devinfo(models.Model):
 
 	def screen_tag(self):
 		if self.dev_url :
-			if self.dev_screenshot_img.url is not None:
+			if self.dev_screenshot_img is not None:
 				return u'<a href="%s" target="_blank">##</a>' % self.dev_screenshot_img.url
 			else:
-				return u'##'
+				return u'GG'
 	screen_tag.short_description = '截圖'
 	screen_tag.allow_tags = True
 	
-	
+
 	"""
 	def image2number(self):
 		#image = Image.open('phone-可伊-台中市北屯區文心路四段.png') #圖檔名稱
