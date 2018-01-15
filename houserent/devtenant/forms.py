@@ -10,7 +10,7 @@ from django import forms
 class TenantForm(forms.ModelForm):
 	class Meta:
 		model = Tenant
-		fields = ('te_state', 'te_name', 'te_phone', 'te_zone', 'te_money', 'te_note',)
+		fields = ('te_name', 'te_phone', 'te_note',)
 	def __init__(self, *args, submit_title='Submit', **kwargs):
 		super().__init__(*args, **kwargs)
 		self.helper = FormHelper()

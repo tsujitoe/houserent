@@ -36,6 +36,7 @@ urlpatterns = [
     # 2.0 和 1.8 差別在url & path
     url(r'^admin/', include(admin.site.urls)),
     #path('admin/', admin.site.urls),
+    url(r'^capture/',  include('screamshot.urls', namespace='screamshot', app_name='screamshot')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  

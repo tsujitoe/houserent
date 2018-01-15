@@ -35,9 +35,15 @@ class Devinfo(models.Model):
 
 	def url_tag(self):
 		if self.dev_url :
-			return u'<a href="%s" target="_blank">#</a>' % self.dev_url
+			return u'<a href="%s" target="_blank">Go</a>' % self.dev_url
 	url_tag.short_description = '連結'
 	url_tag.allow_tags = True
+
+	def screen_tag(self):
+		if self.dev_url :
+			return u'<a href="%s" target="_blank">##</a>' % self.dev_screenshot_img.url
+	screen_tag.short_description = '截圖'
+	screen_tag.allow_tags = True
 	
 	"""
 	def image2number(self):
