@@ -48,6 +48,7 @@ class Devinfo(models.Model):
 	screen_tag.short_description = '截圖'
 	screen_tag.allow_tags = True
 	
+	
 	"""
 	def image2number(self):
 		#image = Image.open('phone-可伊-台中市北屯區文心路四段.png') #圖檔名稱
