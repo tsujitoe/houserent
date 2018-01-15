@@ -8,7 +8,7 @@ from .models import Devinfo
 class Dvenifoadmin(admin.ModelAdmin):
 
 	list_display = ('state', 'dev_tracetime', 'dev_type', 'dev_zone','dev_name','dev_phone', 'image_tag',
-		'dev_address','dev_rent', 'dev_date', 'screen_tag', 'url_tag',)
+		'dev_address','dev_rent', 'dev_date', 'url_tag',)
 	fieldsets = (
 		['Main',{
 		'fields':('state', 'dev_tracetime','dev_name', 'dev_phone','dev_phone_img'),
