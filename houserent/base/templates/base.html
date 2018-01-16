@@ -34,7 +34,16 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 
-        <li><a href="#">掃街資訊</a></li>
+        <li class="dropdown">  
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">房客資訊<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'tenant_get' %}">房客紀錄</li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">電腦版</li>
+            <li><a href="../../../admin/devtenant/tenant/">房客管理</a></li>
+          </ul>
+        </li>
+
 
         <li class="dropdown">  
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">案件回報 <span class="caret"></span></a>
@@ -46,24 +55,24 @@
         </li>
 
         <li class="dropdown">  
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">開發系統 <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">掃街資訊 <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="../../../admin/devhouse/devinfo/">電話開發(電腦版)</a></li>
-            <li role="separator" class="divider"></li>
-            <li class="dropdown-header">搜集資料</li>
-            <li><a href="{% url 'get_url' %}">591網址</a></li>
+            <li><a href="#">現場拍照</a></li>
+            <li><a href="#">網路搜集</a></li>
           </ul>
         </li>
 
         <li class="dropdown">  
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">房客資訊<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">開發系統 <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="../../../admin/devtenant/tenant/">房客管理(電腦版)</a></li>
+            <li><a href="{% url 'get_url' %}">591網址</a></li>
+            <li><a href="#">好房網</a></li>
             <li role="separator" class="divider"></li>
-            <li class="dropdown-header">搜集資料</li>
-            <li><a href="{% url 'tenant_get' %}">房客紀錄</a></li>
+            <li class="dropdown-header">電腦版</li>
+            <li><a href="../../../admin/devhouse/devinfo/">電話開發</a></li>
           </ul>
         </li>
+
 
         <li><a href="{% url 'upload-new' %}">照片自由傳</a></li>
       

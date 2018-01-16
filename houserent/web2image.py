@@ -7,8 +7,8 @@ import requests
 
 #使用django-screamhot
 
-host_url="http://tsujitoe.pythonanywhere.com"
-#host_url="http://127.0.0.1:8000"
+#host_url="http://tsujitoe.pythonanywhere.com"
+host_url="http://127.0.0.1:8000"
 
 infos = Devinfo.objects.all()
 for info in infos:
