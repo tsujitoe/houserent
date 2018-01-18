@@ -65,6 +65,7 @@ def rooms_update(request, pk):
 	return render(request, 'rooms_update.html', {
 		'room_formset': room_formset, 'suite': suite, })
 
+
 def model_form_upload(request):
 	if request.method == 'POST':
 		form = SuitePhotoForm(request.POST, request.FILES)

@@ -1,0 +1,23 @@
+
+{% extends 'base.html' %}
+
+
+{% block content %}
+  <h1>{{ address.now_address }}</h1>
+  <h1>{{ address.now_phone }}</h1>
+  <a href="{% url 'img_street' pk=address.pk %}" class="btn btn-default">上傳照片</a>
+  
+ 
+  <h2>照片資訊</h2>
+  <table class="table">  
+    <thead>
+      <tr><th></th></tr>
+    </thead>
+    <tbody>
+    {% for go_image in address.img_address.all %}
+      <img src="{{ go_image.image }}">
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}

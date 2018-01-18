@@ -11,8 +11,14 @@ class Devinfo(models.Model):
 		('失敗', '失敗'),
 		('成功', '成功'),
 	)
+	member_items=(
+		('依蓓','依蓓'),
+		('寶妮','寶妮'),
+		('定騰','定騰'),
+		)
 	dev_date = models.DateField(verbose_name='更新時間', auto_now=True)
 	state = models.CharField(verbose_name='狀態', choices=state_items, default='未打' ,max_length=20)
+	dev_menber = models.CharField(verbose_name='開發人員', choices=member_items, default='未打' ,max_length=20)
 	dev_url = models.CharField(verbose_name='網址', blank=True, null=True, unique=True, max_length=100)
 	dev_zone = models.CharField(verbose_name='區域', blank=True, null=True ,max_length=10)
 	dev_type = models.CharField(verbose_name='類型', blank=True, null=True ,max_length=20)
@@ -20,7 +26,7 @@ class Devinfo(models.Model):
 	dev_rent = models.CharField(verbose_name='租金', blank=True, null=True ,max_length=50)
 	dev_name = models.CharField(verbose_name='稱呼', blank=True, null=True ,max_length=30)
 	dev_phone = models.CharField(verbose_name='電話', blank=True, null=True ,max_length=30)
-	dev_phone_img = models.ImageField(verbose_name='電話圖', upload_to='dev-phone', null=True)
+	dev_phone_img = models.ImageField(verbose_name='電話圖', upload_to='dev-phone', blank=True, null=True)
 	dev_screenshot_img = models.ImageField(verbose_name='網頁截圖', upload_to='dev-web', blank=True, null=True ,max_length=100)
 	dev_note = models.TextField(verbose_name='開發紀錄', default=' ', blank=True, null=True)
 	dev_tracetime = models.DateField(verbose_name='追蹤時間', blank=True, null=True)

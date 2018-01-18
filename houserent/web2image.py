@@ -35,6 +35,37 @@ for info in infos:
 
 
 """
+# 使用網路上的api，不過是失敗的
+apiKey = "OwTxz6SgUOK1n2w0"
+agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36'
+
+infos = Devinfo.objects.all()
+for info in infos:
+	get_591=info.dev_url
+	img='https://api.urlbox.io/v1/%s/png?url=%s&user_agent=%s&timeout=30000'%(apiKey,get_591,agent)
+	filename_screen = 'screen-'+info.dev_address
+	imgraw = requests.get(img, stream=True)
+
+	img_temp = NamedTemporaryFile(delete=True)
+	img_temp.write(imgraw.content)
+	img_temp.flush()
+	info.dev_screenshot_img.save('%s.png'%(filename_screen),File(img_temp), save=True)
+	print("ok--%s"%(filename_screen))
+	#except:
+	print('這連結有問題-%s'%info.dev_url)
+	print('沒有圖片')
+	pass
+	#else:
+	#	print('已經截圖了')
+	#	print('%s'%info.id)
+"""
+
+
+
+
+
+
+"""
 import imgkit
 options = {
 	'format': 'png',

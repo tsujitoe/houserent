@@ -1,0 +1,14 @@
+{# suite/templates/suite_update.html #}
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+{% block content %}
+
+<h1>{{ address.now_address }}</h1>
+<br/>
+<h2>照片上傳：</h2>
+{% crispy formset %}
+
+{% endblock content %}

@@ -32,6 +32,7 @@ urlpatterns = [
 
     url(r'^devstreet/', include('devstreet.urls')),
     #url(r'^$', lambda x: HttpResponseRedirect('/devstreet/new/')),
+    url(r'^gostreet/', include('gostreet.urls')),
 
     # 2.0 和 1.8 差別在url & path
     url(r'^admin/', include(admin.site.urls)),

@@ -1,0 +1,10 @@
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+{% block title %}建立案件 | {{ block.super }}{% endblock title %}
+
+{% block content %}
+{% crispy form %}
+{% endblock content %}

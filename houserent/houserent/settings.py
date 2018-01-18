@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'devhouse',
     'devtenant',
     'devstreet',
+    'gostreet',
 
     ]
 
