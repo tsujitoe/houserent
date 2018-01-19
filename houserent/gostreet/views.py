@@ -22,6 +22,22 @@ def street_create(request):
 	return render(request, 'street_create.html', {'form': form})
 
 
+def street_update(request, pk):
+	try:
+		address = MediaInfo.objects.get(pk=pk)
+	except MediaInfo.DoesNotExist:
+		raise Http404
+	if request.method == 'POST':
+		form = MediaInfoForm(request.POST, request.FILES, instance=address, submit_title='更新')
+		if form.is_valid():
+			address = form.save()
+			return redirect(address.get_absolute_url())
+	else:
+		form = MediaInfoForm(instance=address, submit_title=None)
+		form.helper.form_tag = False
+	return render(request, 'street_update.html', {'form': form, 'address': address })
+
+
 def  street_detail(request, pk):
 	try:
 		address = MediaInfo.objects.get(pk=pk)
@@ -36,14 +52,13 @@ def street_image(request, pk):
 	except MediaInfo.DoesNotExist:
 		raise Http404
 	if request.method == "POST":
-		#form = MediaInfoForm(request.POST, instance=address, submit_title='建立')
-		formset = MediaInlineFormset(request.POST, instance=address, submit_title='上傳')
+		#form = MediaInfoForm(request.POST, instance=address, submit_title='更新')
+		formset = MediaInlineFormset(request.POST, request.FILES, instance=address)
 		#formset = MediaInlineFormset(request.POST, request.FILES)
 		if formset.is_valid():
 			formset.save()
 			return redirect(address.get_absolute_url())
 	else:
-		#form = MediaInfo(instance=address, submit_title=None)
 		formset = MediaInlineFormset(instance=address)
 	return render(request, 'street_image.html', {'address':address, 'formset':formset})
 
@@ -74,3 +89,5 @@ def post(request):
 	return render(request, 'gostreet.html',
 		{'postForm': postForm, 'formset': formset}, )
 """
+
+

@@ -37,7 +37,7 @@
         <li class="dropdown">  
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">房客資訊<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="{% url 'tenant_get' %}">房客紀錄</li>
+            <li><a href="{% url 'tenant_get' %}">房客紀錄</a></li>
             <li role="separator" class="divider"></li>
             <li class="dropdown-header">電腦版</li>
             <li><a href="../../../admin/devtenant/tenant/">房客管理</a></li>
@@ -59,8 +59,14 @@
           <ul class="dropdown-menu">
             <li><a href="{% url 'go_street' %}">現場拍照</a></li>
             <li><a href="#">網路搜集</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">電腦版</li>
+            <li><a href="../../../admin/gostreet/mediainfo/">掃街管理</a></li>
           </ul>
         </li>
+
+
+
 
         <li class="dropdown">  
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">開發系統 <span class="caret"></span></a>
@@ -86,6 +92,6 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
-
+{% block js %}{% endblock js %}
 </body>
 </html>

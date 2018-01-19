@@ -1,0 +1,22 @@
+{# suite/templates/suite_update.html #}
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+<!-- 加上這個 block -->
+
+<!-- 替換原本的 content block -->
+{% block content %}
+<h1>{{ address.now_address }}</h1>
+<br />
+
+<form method="post" enctype ="multipart/form-data">
+  {% crispy form %}
+  <button type="submit" class="btn btn-primary">修正</button>
+</form>
+{% endblock content %}
+
+
+
+
+

@@ -2,12 +2,6 @@ from django.db import models
 from django.core.urlresolvers import reverse
 #from slugify import slugify
 
-def get_image_filename(instance, filename):
-	#title = instance.media_files.now_address
-	#slug = slugify(title)
-	return "street_images/掃街照片-%s" % (filename)  
-
-
 class MediaInfo(models.Model):
 	now_address = models.CharField(verbose_name='場勘地址', blank=True, null=True, max_length=100)
 	now_phone = models.CharField(verbose_name='現場電話', blank=True, null=True, max_length=30)
@@ -16,9 +10,9 @@ class MediaInfo(models.Model):
 		return reverse('detail_street', kwargs={'pk': self.pk})
 	
 class Media(models.Model):
-	media_files = models.ForeignKey(MediaInfo, verbose_name='現場照片',on_delete=models.SET_NULL, blank=True, null=True, related_name='img_address')
-	image = models.FileField(upload_to=get_image_filename)
-
+	media_files = models.ForeignKey(MediaInfo, on_delete=models.SET_NULL, blank=True, null=True, related_name='img_address')
+	image = models.ImageField(verbose_name='', upload_to='street_photo/%Y-%m-%d', blank=True, null=True)
+	image_note = models.CharField(verbose_name='照片說明', default='.',blank=True, null=True, max_length=50)
 
 
 """

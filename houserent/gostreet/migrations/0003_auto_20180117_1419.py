@@ -35,6 +35,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='images_street',
             name='image',
-            field=models.ImageField(blank=True, null=True, upload_to=gostreet.models.get_image_filename, verbose_name='掃街照片'),
+            field=models.ImageField(blank=True, null=True, upload_to='street_images', verbose_name='掃街照片'),
         ),
     ]

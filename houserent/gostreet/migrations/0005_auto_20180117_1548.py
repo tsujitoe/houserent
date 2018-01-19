@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='media',
             name='image',
-            field=models.FileField(default=2, upload_to=gostreet.models.get_image_filename),
+            field=models.FileField(default=2, upload_to='street_images'),
             preserve_default=False,
         ),
         migrations.AlterField(

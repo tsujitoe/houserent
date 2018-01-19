@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
             name='Images_street',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(upload_to=gostreet.models.get_image_filename, verbose_name='Image')),
+                ('image', models.ImageField(upload_to='street_images', verbose_name='Image')),
             ],
         ),
         migrations.CreateModel(

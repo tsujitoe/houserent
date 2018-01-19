@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(blank=True, max_length=50)),
                 ('description', models.CharField(blank=True, max_length=255)),
-                ('media_file', models.FileField(upload_to=gostreet.models.get_image_filename)),
+                ('media_file', models.FileField(upload_to='street_images')),
             ],
         ),
         migrations.RemoveField(

@@ -1,6 +1,8 @@
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Fieldset
-#from crispy_forms.bootstrap import InlineCheckboxes, Field, Div
+from crispy_forms.bootstrap import InlineCheckboxes, Field, Div, InlineField
+
+
 
 from django import forms
 from django.forms.models import inlineformset_factory
@@ -18,9 +20,10 @@ class MediaInfoForm(forms.ModelForm):
 	def __init__(self, *args, submit_title='Submit', **kwargs):
 		super().__init__(*args, **kwargs)
 		self.helper = FormHelper()
-		#self.helper.form_tag = False        # 我們要自己包。
+		#self.helper.form_tag = False        # 我們要自己包
 		if submit_title:
 			self.helper.add_input(Submit('submit', submit_title))
+
 
 class MediaForm(forms.ModelForm):
 	#image = forms.ImageField()    
@@ -35,16 +38,17 @@ class MediaForm(forms.ModelForm):
 			self.helper.add_input(Submit('submit', submit_title))
 
 BaseMediaInlineFormset = inlineformset_factory(
-	parent_model=MediaInfo, model=Media, fields=('image',), extra=3,)
+	parent_model=MediaInfo, model=Media, 
+	fields=('image','image_note',), extra=1)
 
 
 
 class MediaInlineFormset(BaseMediaInlineFormset):
-	def __init__(self, *args, submit_title='Submit', **kwargs):
+	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
 		self.helper = FormHelper()
-		#self.helper.form_tag = False
+		self.helper.form_tag = False
 		#self.helper.disable_csrf = True
-		if submit_title:
-			self.helper.add_input(Submit('submit', submit_title))
-
+		#self.helper.layout = Layout(InlineField('image','image_note'),)
+		#if submit_title:
+		#	self.helper.add_input(Submit('submit', submit_title))

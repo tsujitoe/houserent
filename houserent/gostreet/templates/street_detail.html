@@ -1,11 +1,21 @@
 
 {% extends 'base.html' %}
-
+{% load staticfiles %}
 
 {% block content %}
-  <h1>{{ address.now_address }}</h1>
-  <h1>{{ address.now_phone }}</h1>
   <a href="{% url 'img_street' pk=address.pk %}" class="btn btn-default">上傳照片</a>
+
+  <a href="{% url 'update_street' pk=address.pk %}" class="btn btn-default">修改資料</a>
+  
+  <h1>地址：{{ address.now_address }}</h1>
+  <h1>電話：{{ address.now_phone }}</h1>
   
  
+  <h1>照片資訊：</h1>
+    {% for go_image in address.img_address.all %}
+      <h3>{{ go_image.image_note }}</h3>
+      <h4><img src="/media/{{ go_image.image }}" width="300px" /></h4>
+      <hr />
+    {% endfor %}
+
 {% endblock content %}

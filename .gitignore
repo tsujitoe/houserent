@@ -9,3 +9,6 @@ venv
 
 houserent/db.sqlite3
 houserent/media
+houserent/data_function
+
+hosuerent/static/node_modules
