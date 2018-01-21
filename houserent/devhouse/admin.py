@@ -11,11 +11,13 @@ class Dvenifoadmin(admin.ModelAdmin):
 		'dev_address','dev_rent', 'dev_date', 'screen_tag', 'url_tag',)
 	fieldsets = (
 		['Main',{
-		'fields':('state','dev_menber' ,'dev_tracetime','dev_name', 'dev_phone','dev_phone_img'),
+		'fields':('state','dev_menber' ,'dev_tracetime','dev_name', 'dev_phone', 'dev_note'),
 		}],
 		['其他資訊',{
 		'classes': ('collapse',),
-		'fields':('dev_note', 'dev_address','dev_rent', 'dev_screenshot_img'),
+		'fields':('dev_address', 'dev_rent',
+			'dev_zone', 'dev_pattern', 
+			'dev_phone_img','dev_screenshot_img',),
 		}]
 	)
 	search_fields = ('dev_phone','dev_address',)
