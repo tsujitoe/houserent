@@ -24,24 +24,23 @@ class MediaInfoForm(forms.ModelForm):
 		if submit_title:
 			self.helper.add_input(Submit('submit', submit_title))
 
-
 class MediaForm(forms.ModelForm):
-	#image = forms.ImageField()    
+	#image = forms.ImageField()  
+	image = forms.ImageField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
+	#image = forms.ModelMultipleChoiceField(queryset=MediaInfo.objects.all())
 	class Meta:
 		model = Media
 		fields = ('image', )
-	def __init__(self, *args, submit_title='Submit', **kwargs):
+	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
 		self.helper = FormHelper()
-		#self.helper.form_tag = False        # 我們要自己包。
-		if submit_title:
-			self.helper.add_input(Submit('submit', submit_title))
+		self.helper.form_tag = False        # 我們要自己包。
+		#if submit_title:
+		#	self.helper.add_input(Submit('submit', submit_title))
 
 BaseMediaInlineFormset = inlineformset_factory(
 	parent_model=MediaInfo, model=Media, 
-	fields=('image','image_note',), extra=1)
-
-
+	fields=('image',), extra=1)
 
 class MediaInlineFormset(BaseMediaInlineFormset):
 	def __init__(self, *args, **kwargs):
@@ -52,3 +51,4 @@ class MediaInlineFormset(BaseMediaInlineFormset):
 		#self.helper.layout = Layout(InlineField('image','image_note'),)
 		#if submit_title:
 		#	self.helper.add_input(Submit('submit', submit_title))
+

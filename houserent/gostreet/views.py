@@ -24,18 +24,21 @@ def street_create(request):
 
 def street_update(request, pk):
 	try:
-		address = MediaInfo.objects.get(pk=pk)
+		address = MediaInfo.objects.get(pk=pk) 
 	except MediaInfo.DoesNotExist:
 		raise Http404
 	if request.method == 'POST':
-		form = MediaInfoForm(request.POST, request.FILES, instance=address, submit_title='更新')
-		if form.is_valid():
+		form = MediaInfoForm(request.POST, instance=address, submit_title=None)
+		formset = MediaInlineFormset(request.POST, request.FILES, instance=address)
+		if form.is_valid() and formset.is_valid():
 			address = form.save()
+			formset.save()
 			return redirect(address.get_absolute_url())
 	else:
 		form = MediaInfoForm(instance=address, submit_title=None)
 		form.helper.form_tag = False
-	return render(request, 'street_update.html', {'form': form, 'address': address })
+		formset = MediaInlineFormset(instance=address)
+	return render(request, 'street_update.html', {'form': form, 'formset': formset, 'address': address })
 
 
 def  street_detail(request, pk):
@@ -46,23 +49,48 @@ def  street_detail(request, pk):
 	return render(request, 'street_detail.html', {'address': address})
 
 
+def street_mul_image(request, pk):
+	try:
+		address = MediaInfo.objects.get(pk=pk)
+	except MediaInfo.DoesNotExist:
+		raise Http404
+	if request.method == "POST":
+		formset = MediaInlineFormset(request.POST, request.FILES, instance=address)
+		if formset.is_valid():
+			formset.save()
+			return redirect(address.get_absolute_url())
+	else:
+		formset = MediaInlineFormset(instance=address)
+	return render(request, 'street_mul_image.html', {'address':address, 'formset':formset})
+
+
+
 def street_image(request, pk):
 	try:
 		address = MediaInfo.objects.get(pk=pk)
 	except MediaInfo.DoesNotExist:
 		raise Http404
 	if request.method == "POST":
-		#form = MediaInfoForm(request.POST, instance=address, submit_title='更新')
-		formset = MediaInlineFormset(request.POST, request.FILES, instance=address)
-		#formset = MediaInlineFormset(request.POST, request.FILES)
-		if formset.is_valid():
-			formset.save()
+		form = MediaInlineFormset(request.POST, request.FILES, instance=address)
+		if form.is_valid():
+			form.save()
 			return redirect(address.get_absolute_url())
 	else:
-		formset = MediaInlineFormset(instance=address)
-	return render(request, 'street_image.html', {'address':address, 'formset':formset})
+		form = MediaInlineFormset(instance=address)
+	return render(request, 'street_image.html', {'address':address, 'form':form})
 
 
+
+"""
+#for multi upload image
+
+			for count, x in enumerate(request.FILES.getlist("image"))
+				def handle_uploaded_file(f):
+				with open('some/file/name.txt', 'wb+') as destination:
+					for chunk in f.chunks():
+						destination.write(chunk)
+				process(x)
+"""
 
 
 """

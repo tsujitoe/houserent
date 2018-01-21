@@ -3,16 +3,43 @@ from django.core.urlresolvers import reverse
 #from slugify import slugify
 
 class MediaInfo(models.Model):
+	state_items=(
+		('新接', '新接'),
+		('屋主', '屋主'),
+		('查詢', '查詢'),
+		('拜訪', '拜訪'),
+		('失敗', '失敗'),
+		('成功', '成功'),
+	)
+	now_state = models.CharField(verbose_name='狀態', choices=state_items, default='新接' ,max_length=20)
 	now_address = models.CharField(verbose_name='場勘地址', blank=True, null=True, max_length=100)
 	now_phone = models.CharField(verbose_name='現場電話', blank=True, null=True, max_length=30)
 	now_note = models.TextField(verbose_name='紀錄備忘', default='租金價位: \n是否仲介: \n其他注意:', blank=True, null=True)
+	class Meta:
+		verbose_name_plural='掃街資訊'
+
 	def get_absolute_url(self):
 		return reverse('detail_street', kwargs={'pk': self.pk})
+	def get_absolute_url_edit(self):
+		return reverse('update_street', kwargs={'pk': self.pk})
+	def url_tag(self):
+		return u'<a href="%s" target="_blank">Go</a>' % self.get_absolute_url_edit
+	url_tag.short_description = '修正'
+	url_tag.allow_tags = True
+
+
+
+
 	
 class Media(models.Model):
 	media_files = models.ForeignKey(MediaInfo, on_delete=models.SET_NULL, blank=True, null=True, related_name='img_address')
 	image = models.ImageField(verbose_name='', upload_to='street_photo/%Y-%m-%d', blank=True, null=True)
 	image_note = models.CharField(verbose_name='照片說明', default='.',blank=True, null=True, max_length=50)
+	def image_tag(self):
+		if self.image :
+			return u'<img src="%s" width="100px" />' % self.iamge.url
+	image_tag.short_description = '圖片'
+	image_tag.allow_tags = True
 
 
 """
