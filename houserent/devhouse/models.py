@@ -23,6 +23,7 @@ class Devinfo(models.Model):
 	dev_url = models.CharField(verbose_name='網址', blank=True, null=True, unique=True, max_length=100)
 	dev_zone = models.CharField(verbose_name='區域', blank=True, null=True ,max_length=10)
 	dev_type = models.CharField(verbose_name='類型', blank=True, null=True ,max_length=20)
+	dev_pattern = models.CharField(verbose_name='格局', blank=True, null=True ,max_length=30)
 	dev_address = models.CharField(verbose_name='地址', blank=True, null=True ,max_length=100)
 	dev_rent = models.CharField(verbose_name='租金', blank=True, null=True ,max_length=50)
 	dev_name = models.CharField(verbose_name='稱呼', blank=True, null=True ,max_length=30)

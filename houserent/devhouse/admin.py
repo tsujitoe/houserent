@@ -7,7 +7,7 @@ from .models import Devinfo
 @admin.register(Devinfo)
 class Dvenifoadmin(admin.ModelAdmin):
 
-	list_display = ('state', 'dev_tracetime', 'dev_type', 'dev_zone','dev_name','dev_phone',
+	list_display = ('state', 'dev_tracetime', 'dev_zone','dev_name','dev_phone',
 		'dev_address','dev_rent', 'dev_date', 'screen_tag', 'url_tag',)
 	fieldsets = (
 		['Main',{
@@ -19,7 +19,7 @@ class Dvenifoadmin(admin.ModelAdmin):
 		}]
 	)
 	search_fields = ('dev_phone','dev_address',)
-	list_filter = ('state','dev_type','dev_zone','dev_date','dev_menber',)
+	list_filter = ('state','dev_type', 'dev_pattern', 'dev_zone','dev_date','dev_menber',)
 	list_editable = ('state',)
 	list_display_links = ('dev_name',)
 	list_per_page = 10

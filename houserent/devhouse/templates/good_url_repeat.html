@@ -1,0 +1,11 @@
+{# suite/templates/suite_create.html #}
+
+{% extends 'base.html' %}
+
+{% block title %}建立連結 | {{ block.super }}{% endblock title %}
+
+{% block content %}
+	<h1>網址重複了，難道您累了?</h1>
+	<a href="{% url 'get_url' %}" class="btn btn-default">繼續更新</a>
+	
+{% endblock content %}

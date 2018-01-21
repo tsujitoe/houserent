@@ -6,7 +6,9 @@
 
   <h2>{{ url.dev_address }}</h2>
   <h2>{{ url.dev_name }}</h2>
-  <h2><img src="/media/{{ url.dev_phone_img }}" width="100px" /></h2>
+  <h2>{{ url.dev_pattern }}</h2>
+
+  <h2><img src="/media/{{ url.dev_phone_img }}" width="200px" /></h2>
   <br>
   <a href="{% url 'get_url' %}" class="btn btn-default">繼續更新</a>
 

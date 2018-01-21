@@ -53,6 +53,9 @@ def get_work(request, pk):
 	dev_house.dev_address = soup.find("span", {"class":"addr"}).text
 	dev_house.dev_zone = soup.find("div", { "id" : "propNav" }).find_all("a")[3].text
 	dev_house.dev_type = soup.find("div", { "id" : "propNav" }).find_all("a")[4].text
+	#dev_house.dev_pattern = soup.find("ul", {"class" : "attr"}).text
+	# 591在整層住家有格局，但是在套房就沒有了
+
 
 	money = soup.find("div", {"class":"price clearfix"}).text
 	dev_house.dev_rent = ''.join([x for x in money if x.isdigit()])
@@ -100,3 +103,54 @@ def url_list(request, pk):
 
 
 
+
+
+
+def url_dev_good(request):
+	if request.method == 'POST':
+		url_form = UrlForm(request.POST, submit_title='建立')
+		if url_form.is_valid():
+			form = url_form.save()
+			return redirect(reverse('url_work_good', kwargs={'pk': form.pk}))
+	else:
+		form = UrlForm(submit_title='建立')
+	return render(request, 'good_url_create.html', {'form': form})
+
+
+def get_work_good(request, pk):
+	try:
+		dev_house = Devinfo.objects.get(pk=pk)
+	except Devinfo.DoesNotExist:
+		raise Http404
+	
+	head = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36'}
+	res = requests.get(dev_house.dev_url, headers = head)
+	soup = BeautifulSoup(res.text, 'lxml')
+	#純文字	
+	dev_house.dev_address = soup.find("address", {"class":"value addr"}).text.replace("租金行情","")
+	dev_house.dev_name = soup.find("span", {"id":"spanAgent"}).text
+	
+	fix_phone = soup.find("span", {"class":"tel"}).text 
+	fix_phone = ''.join([x for x in fix_phone if x.isdigit()])
+	fix_phone = fix_phone[:4] + '-' + fix_phone[4:7] + '-' + fix_phone[7:]
+	dev_house.dev_phone = fix_phone
+	
+	money = soup.find("li", {"class":"DataListWrap"}).find_all("span", "num")[0].text
+	dev_house.dev_rent = money
+	
+	
+	dev_house.dev_zone = soup.find("a", { "ga_label" : "detail_breadcrumbs_area" }).text
+	dev_house.dev_type =  soup.find_all("span", "value")[7].text
+	dev_house.dev_pattern = soup.find_all("span", "value")[5].text
+	
+
+	dev_house.save()	
+
+	return redirect(reverse('url_list_good', kwargs={'pk': pk}))	
+
+def url_list_good(request, pk):
+	try:
+		url = Devinfo.objects.get(pk=pk)
+	except Devinfo.DoesNotExist:
+		raise Http404
+	return render(request, 'good_url_list.html', {'url': url})
