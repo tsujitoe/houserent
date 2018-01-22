@@ -1,31 +1,43 @@
 from django.contrib import admin
 
-
 from .models import MediaInfo, Media
+from .forms import AdminImageWidget, MediaForm
+
+from sorl.thumbnail.admin import AdminImageMixin
+
 # Register your models here.
 
+class ImageInline(AdminImageMixin, admin.TabularInline):
+  model = Media
+  form  = MediaForm
+  extra = 1
+
+"""
 class MediaInline(admin.StackedInline):
 	model = Media
 	#fields = ('image_tag',)
 	extra = 1
+"""
 
 @admin.register(MediaInfo)
-class MediaInfoadmin(admin.ModelAdmin):
-	search_fields = ('now_address',)
-	list_display = ('now_state', 'now_address', 'now_phone',)
+class MediaInfoadmin(AdminImageMixin, admin.ModelAdmin):
+	search_fields = ('now_address', 'now_phone',)
+	list_display = ('now_state','now_tracetime', 'now_address', 'now_phone', 'now_date',)
 	list_editable = ('now_state',)
 	list_display_links = ('now_address',)
+	list_filter = ('now_tracetime',)
 	list_per_page = 10
-	inlines = (MediaInline, )
+	inlines = (ImageInline, )
 	fieldsets = (
 		['Main',{
-		'fields':('now_state', 'now_address', 'now_phone'),
+		'fields':('now_state', 'now_tracetime', 'now_address', 'now_phone'),
 		}],
-		['其他資訊',{
+		['謄本資訊',{
 		'classes': ('collapse',),
-		'fields':(),
+		'fields':('now_transcript_name', 'now_transcript_address', 'now_transcript_note'),
 		}]
 	)
+
 
 
 """

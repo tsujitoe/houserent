@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}建立連結 | {{ block.super }}{% endblock title %}
+
+{% block content %}
+
+	<h1>抓抓信義房屋：</h1>
+	{% crispy form %}
+
+	<h3>注意：</h3>
+	<h3>＊網頁有仲介費就不用輸入</h3>
+	<h3>＊因抓取電話程式有點麻煩，效益不高，就先不要使用</h3>
+	
+{% endblock content %}
+

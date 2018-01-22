@@ -15,6 +15,16 @@ class MediaInfo(models.Model):
 	now_address = models.CharField(verbose_name='場勘地址', blank=True, null=True, max_length=100)
 	now_phone = models.CharField(verbose_name='現場電話', blank=True, null=True, max_length=30)
 	now_note = models.TextField(verbose_name='紀錄備忘', default='租金價位: \n是否仲介: \n其他注意:', blank=True, null=True)
+
+	#謄本資料
+	now_transcript_name = models.CharField(verbose_name='所有權人', blank=True, null=True, max_length=50)
+	now_transcript_address = models.CharField(verbose_name='戶籍地址', blank=True, null=True, max_length=100)
+	now_transcript_note = models.TextField(verbose_name='查詢記錄', default='.', blank=True, null=True)
+
+	#時間追蹤
+	now_date = models.DateField(verbose_name='更新時間', auto_now=True)
+	now_tracetime = models.DateField(verbose_name='追蹤時間', blank=True, null=True)
+
 	class Meta:
 		verbose_name_plural='掃街資訊'
 
@@ -28,13 +38,14 @@ class MediaInfo(models.Model):
 	url_tag.allow_tags = True
 
 
-
-
 	
 class Media(models.Model):
 	media_files = models.ForeignKey(MediaInfo, on_delete=models.SET_NULL, blank=True, null=True, related_name='img_address')
 	image = models.ImageField(verbose_name='', upload_to='street_photo/%Y-%m-%d', blank=True, null=True)
 	image_note = models.CharField(verbose_name='照片說明', default='.',blank=True, null=True, max_length=50)
+	def __str__(self):
+		return '圖片'
+
 	def image_tag(self):
 		if self.image :
 			return u'<img src="%s" width="100px" />' % self.iamge.url

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     'crispy_forms',
     #'screamshot',
+    'sorl.thumbnail',
    
     'django.contrib.admin',
     'django.contrib.auth',

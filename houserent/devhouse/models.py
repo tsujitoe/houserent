@@ -21,6 +21,7 @@ class Devinfo(models.Model):
 	state = models.CharField(verbose_name='狀態', choices=state_items, default='未打' ,max_length=20)
 	dev_menber = models.CharField(verbose_name='開發人員', choices=member_items, default='未知' ,max_length=20)
 	dev_url = models.CharField(verbose_name='網址', blank=True, null=True, unique=True, max_length=100)
+	dev_source = models.CharField(verbose_name='來源', blank=True, null=True, unique=True, max_length=20)
 	dev_zone = models.CharField(verbose_name='區域', blank=True, null=True ,max_length=10)
 	dev_type = models.CharField(verbose_name='類型', blank=True, null=True ,max_length=20)
 	dev_pattern = models.CharField(verbose_name='格局', blank=True, null=True ,max_length=30)

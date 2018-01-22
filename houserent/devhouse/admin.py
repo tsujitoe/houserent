@@ -15,13 +15,13 @@ class Dvenifoadmin(admin.ModelAdmin):
 		}],
 		['其他資訊',{
 		'classes': ('collapse',),
-		'fields':('dev_address', 'dev_rent',
+		'fields':('dev_source', 'dev_address', 'dev_rent',
 			'dev_zone', 'dev_pattern', 
 			'dev_phone_img','dev_screenshot_img',),
 		}]
 	)
 	search_fields = ('dev_phone','dev_address',)
-	list_filter = ('state','dev_type', 'dev_pattern', 'dev_zone','dev_date','dev_menber',)
+	list_filter = ('state','dev_type', 'dev_zone','dev_date','dev_menber','dev_pattern', )
 	list_editable = ('state',)
 	list_display_links = ('dev_name',)
 	list_per_page = 10

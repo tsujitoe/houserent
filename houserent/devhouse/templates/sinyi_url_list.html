@@ -1,0 +1,16 @@
+{# devhouse/templates/url_list.html #}
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{{ url.dev_type }}</h2>
+  <h2>{{ url.dev_zone }}</h2>
+  <h2>{{ url.dev_address }}</h2>
+  <h2>{{ url.dev_name }}</h2>
+  <h2>{{ url.dev_phone }}</h2>
+  <h2>{{ url.dev_rent }}</h2>
+  
+  <br>
+  <a href="{% url 'get_url_sinyi' %}" class="btn btn-default">繼續更新</a>
+
+{% endblock content %}

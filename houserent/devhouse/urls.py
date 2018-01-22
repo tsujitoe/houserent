@@ -10,6 +10,11 @@ urlpatterns = [
 	url(r'^(?P<pk>\d+)/new/good/$', views.get_work_good, name='url_work_good'),
 	url(r'^(?P<pk>\d+)/good/$', views.url_list_good, name='url_list_good'),
 
+
+	url(r'^new/sinyi/$', views.url_dev_sinyi, name='get_url_sinyi'),
+	url(r'^(?P<pk>\d+)/new/sinyi/$', views.get_work_sinyi, name='url_work_sinyi'),
+	url(r'^(?P<pk>\d+)/sinyi/$', views.url_list_sinyi, name='url_list_sinyi'),
+
 	#url(r'^$', views.suite_list, name='suite_list'),
 	#url(r'^(?P<pk>\d+)/$', views.suite_detail, name='suite_detail'),
 	#url(r'^(?P<pk>\d+)/update/$', views.suite_update, name='suite_update'),url(r'^model_form_upload/$', views.model_form_upload),

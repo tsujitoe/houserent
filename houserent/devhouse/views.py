@@ -22,6 +22,7 @@ from django.db import IntegrityError
 
 
 
+# 591---------------------------------------
 
 def url_dev(request):
 	if request.method == 'POST':
@@ -59,6 +60,8 @@ def get_work(request, pk):
 
 	money = soup.find("div", {"class":"price clearfix"}).text
 	dev_house.dev_rent = ''.join([x for x in money if x.isdigit()])
+
+	dev_house.dev_source = '591'
 
 	dev_house.save()
 
@@ -104,7 +107,7 @@ def url_list(request, pk):
 
 
 
-
+# 好房網---------------------------------------
 
 def url_dev_good(request):
 	if request.method == 'POST':
@@ -142,6 +145,8 @@ def get_work_good(request, pk):
 	dev_house.dev_zone = soup.find("a", { "ga_label" : "detail_breadcrumbs_area" }).text
 	dev_house.dev_type =  soup.find_all("span", "value")[7].text
 	dev_house.dev_pattern = soup.find_all("span", "value")[5].text
+
+	dev_house.dev_source = '好房網'
 	
 
 	dev_house.save()	
@@ -154,3 +159,65 @@ def url_list_good(request, pk):
 	except Devinfo.DoesNotExist:
 		raise Http404
 	return render(request, 'good_url_list.html', {'url': url})
+
+
+
+
+# 信義房屋---------------------------------------
+
+def url_dev_sinyi(request):
+	if request.method == 'POST':
+		url_form = UrlForm(request.POST, submit_title='建立')
+		if url_form.is_valid():
+			form = url_form.save()
+			return redirect(reverse('url_work_sinyi', kwargs={'pk': form.pk}))
+	else:
+		form = UrlForm(submit_title='建立')
+	return render(request, 'sinyi_url_create.html', {'form': form})
+
+
+def get_work_sinyi(request, pk):
+	try:
+		dev_house = Devinfo.objects.get(pk=pk)
+	except Devinfo.DoesNotExist:
+		raise Http404
+	
+	head = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36'}
+	res = requests.get(dev_house.dev_url, headers = head)
+	soup = BeautifulSoup(res.text, 'lxml')
+	#純文字	
+	
+	dev_house.dev_name = soup.find("div", {"class":"landlord"}).text
+	
+	# 因為電話是用class包起來，所以要分析有點麻煩
+	#fix_phone = soup.find("span", {"class":"tel"}).text 
+	#fix_phone = ''.join([x for x in fix_phone if x.isdigit()])
+	#fix_phone = fix_phone[:4] + '-' + fix_phone[4:7] + '-' + fix_phone[7:]
+	#dev_house.dev_phone = fix_phone
+	
+	#區域
+	#dev_house.dev_zone = soup.find("a", { "ga_label" : "detail_breadcrumbs_area" }).text
+	#地址
+	dev_house.dev_address = soup.find("section", {"class":"infoTable"}).find_all('td')[0].text
+	#租金
+	money = soup.find("section", {"class":"infoTable"}).find_all('td')[1].text
+	dev_house.dev_rent = ''.join([x for x in money if x.isdigit()])
+	#類型
+	dev_house.dev_type = soup.find("section", {"class":"infoTable"}).find_all('td')[2].text
+	#格局
+	dev_house.dev_pattern =  soup.find("section", {"class":"infoTable"}).find_all('td')[3].text
+	
+	dev_house.dev_source = '信義房屋'
+	
+
+	dev_house.save()	
+
+	return redirect(reverse('url_list_sinyi', kwargs={'pk': pk}))	
+
+def url_list_sinyi(request, pk):
+	try:
+		url = Devinfo.objects.get(pk=pk)
+	except Devinfo.DoesNotExist:
+		raise Http404
+	return render(request, 'sinyi_url_list.html', {'url': url})
+
