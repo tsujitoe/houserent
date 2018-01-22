@@ -22,8 +22,6 @@ from django.db import IntegrityError
 
 
 
-# 591---------------------------------------
-
 def url_dev(request):
 	if request.method == 'POST':
 		url_form = UrlForm(request.POST, submit_title='建立')
@@ -49,40 +47,53 @@ def get_work(request, pk):
 	head = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36'}
 	res = requests.get(dev_house.dev_url, headers = head)
 	soup = BeautifulSoup(res.text, 'lxml')
-	#純文字	
+	#抓取純文字	
 	dev_house.dev_name = soup.find("div", {"class":"avatarRight"}).find("i").text
 	dev_house.dev_address = soup.find("span", {"class":"addr"}).text
 	dev_house.dev_zone = soup.find("div", { "id" : "propNav" }).find_all("a")[3].text
 	dev_house.dev_type = soup.find("div", { "id" : "propNav" }).find_all("a")[4].text
-	#dev_house.dev_pattern = soup.find("ul", {"class" : "attr"}).text
+	dev_house.dev_source = '591'
 	# 591在整層住家有格局，但是在套房就沒有了
-
-
+	def get_pattern(): 
+		try:
+			pattern = soup.find("div", {"class" : "detailInfo clearfix"}).find_all("li")[0].text[6:]
+			#pattern.replace(" ","")
+			return pattern
+		except:
+			return ''
+	dev_house.dev_pattern = get_pattern()
+	# 租金
 	money = soup.find("div", {"class":"price clearfix"}).text
 	dev_house.dev_rent = ''.join([x for x in money if x.isdigit()])
-
-	dev_house.dev_source = '591'
-
+	# 先把資訊存起來
 	dev_house.save()
 
+	# 開始要抓取圖片了!!
 	filename = dev_house.dev_name+'-'+dev_house.dev_address
-	#電話圖片
-	phone_img = soup.find("div", {"class":"infoTwo clearfix"}).find("img")['src'].split('//')[-1]
-	img = 'https://'+phone_img
-	filename_phone = 'phone-'+filename
-	imgraw = requests.get(img, stream=True)
+	try:
+		phone_img = soup.find("div", {"class":"infoTwo clearfix"}).find("img")['src'].split('//')[-1]
+		img = 'https://'+phone_img
+		filename_phone = 'phone-'+filename
+		imgraw = requests.get(img, stream=True)
 
-	img_temp = NamedTemporaryFile(delete=True)
-	img_temp.write(imgraw.content)
-	img_temp.flush()
+		img_temp = NamedTemporaryFile(delete=True)
+		img_temp.write(imgraw.content)
+		img_temp.flush()
 
-	dev_house.dev_phone_img.save('%s.png'%(filename_phone),File(img_temp), save=True)
+		dev_house.dev_phone_img.save('%s.png'%(filename_phone),File(get_image), save=True)
+		del imgraw
+	except:
+		# It's too bad, no idea to raise except...QQ
+		dev_house.dev_phone_img = ''
+		dev_house.dev_phone = soup.find("div", { "class" : "infoTwo clearfix" }).find("span", {"class" : "num"}).text
+		dev_house.save()
+
 	#f = open('%s.png' % (filename_phone), 'wb')
 	#dev_house.dev_phone_img=shutil.copyfileobj(imgraw.raw, f)
 	#shutil.copyfileobj(imgraw.raw, f)
 	#shutil.move()
 	#f.close
-	del imgraw
+	
 	
 	#電話圖片轉文字
 	try:

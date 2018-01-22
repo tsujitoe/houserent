@@ -9,7 +9,11 @@
   <h2>{{ url.dev_pattern }}</h2>
 
   <h2><img src="/media/{{ url.dev_phone_img }}" width="200px" /></h2>
+  <h2>{{ url.dev_phone }}</h2>
   <br>
   <a href="{% url 'get_url' %}" class="btn btn-default">繼續更新</a>
+
+<h3>注意:</h3>
+<h3>* 沒有顯示電話圖片，表示要591的網頁電話要轉接的方式</h3>
 
 {% endblock content %}

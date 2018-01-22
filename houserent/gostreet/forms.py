@@ -8,7 +8,9 @@ from django.forms.models import inlineformset_factory
 #from django.forms.models import modelformset_factory
 #from django.forms.widgets import CheckboxSelectMultiple
 
-from .models import MediaInfo, Media
+from .models import MediaInfo, Media, FakeInfo
+
+
 
 from django.contrib.admin.widgets import AdminFileWidget
 from django.utils.safestring import mark_safe
@@ -32,7 +34,7 @@ class MediaInfoForm(forms.ModelForm):
 	#title = forms.CharField(max_length=100)
 	class Meta:
 		model = MediaInfo
-		fields = ('now_address', 'now_phone', 'now_note',)
+		fields = ('now_type', 'now_address', 'now_phone', 'now_note',)
 	def __init__(self, *args, submit_title='Submit', **kwargs):
 		super().__init__(*args, **kwargs)
 		self.helper = FormHelper()
@@ -70,4 +72,18 @@ class MediaInlineFormset(BaseMediaInlineFormset, AdminImageMixin, ):
 		#self.helper.layout = Layout(InlineField('image','image_note'),)
 		#if submit_title:
 		#	self.helper.add_input(Submit('submit', submit_title))
+
+
+# for fake tenant--------------------------
+
+class UrlForm(forms.ModelForm):
+	class Meta:
+		model = FakeInfo
+		fields = ('fake_url',)
+	def __init__(self, *args, submit_title='Submit', **kwargs):
+		super().__init__(*args, **kwargs)
+		self.helper = FormHelper()
+		#self.helper.form_tag = False	# 我們要自己包。
+		if submit_title:
+			self.helper.add_input(Submit('submit', submit_title))
 

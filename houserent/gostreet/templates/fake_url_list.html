@@ -1,0 +1,12 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <h2>{{ url.fake_address }}</h2>
+  <h2>{{ url.fake_name }}</h2>
+  <h2><img src="/media/{{ url.fake_phone_img }}" width="200px" /></h2>
+  <br>
+  <a href="{% url 'get_url_fake' %}" class="btn btn-default">繼續更新</a>
+
+{% endblock content %}

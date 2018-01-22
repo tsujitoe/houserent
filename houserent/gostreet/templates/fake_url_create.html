@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}建立連結 | {{ block.super }}{% endblock title %}
+
+{% block content %}
+	<h1>抓抓辛苦的仲介朋友：</h1>
+	{% crispy form %}
+	
+{% endblock content %}
+

@@ -33,7 +33,6 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-
         <li class="dropdown">  
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">房客資訊<span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -58,13 +57,13 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">掃街資訊 <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="{% url 'go_street' %}">現場拍照</a></li>
-            <li><a href="#">網路搜集</a></li>
+            <li><a href="{% url 'get_url_fake' %}">網路搜集</a></li>
             <li role="separator" class="divider"></li>
             <li class="dropdown-header">電腦版</li>
             <li><a href="../../../admin/gostreet/mediainfo/">掃街管理</a></li>
+            <li><a href="../../../admin/gostreet/fakeinfo/">假房管理</a></li>
           </ul>
         </li>
-
 
 
 
