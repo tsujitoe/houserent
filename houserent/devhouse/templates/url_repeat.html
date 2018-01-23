@@ -6,6 +6,7 @@
 
 {% block content %}
 	<h1>網址重複了，難道您累了?</h1>
+	<h2>重複的網址：{% form.dev_url %}</h2>
 	<a href="{% url 'get_url' %}" class="btn btn-default">繼續更新</a>
 	
 {% endblock content %}

@@ -24,8 +24,8 @@ from django.db import IntegrityError
 
 def url_dev(request):
 	if request.method == 'POST':
-		url_form = UrlForm(request.POST, submit_title='建立')
-		if url_form.is_valid():
+		url_form = UrlForm(request.POST, submit_title='建立')	
+		if url_form.is_valid():			
 			form = url_form.save()
 			return redirect(reverse('url_work', kwargs={'pk': form.pk}))
 	else:
@@ -35,7 +35,7 @@ def url_dev(request):
 """
 try:
 except UnboundLocalError:
-	return render(request, 'url_repeat.html')
+	return render(request, 'url_repeat.html', {'form': form})
 """
 
 def get_work(request, pk):
@@ -43,7 +43,7 @@ def get_work(request, pk):
 		dev_house = Devinfo.objects.get(pk=pk)
 	except Devinfo.DoesNotExist:
 		raise Http404
-	
+		
 	head = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36'}
 	res = requests.get(dev_house.dev_url, headers = head)
 	soup = BeautifulSoup(res.text, 'lxml')
@@ -80,7 +80,7 @@ def get_work(request, pk):
 		img_temp.write(imgraw.content)
 		img_temp.flush()
 
-		dev_house.dev_phone_img.save('%s.png'%(filename_phone),File(get_image), save=True)
+		dev_house.dev_phone_img.save('%s.png'%(filename_phone),File(img_temp), save=True)
 		del imgraw
 	except:
 		# It's too bad, no idea to raise except...QQ

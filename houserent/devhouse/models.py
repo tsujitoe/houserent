@@ -49,8 +49,7 @@ class Devinfo(models.Model):
 			else:
 				return u'GG'
 		except:
-			return u'GG'
-			
+			return u'GG'		
 	screen_tag.short_description = '截圖'
 	screen_tag.allow_tags = True
 	
