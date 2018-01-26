@@ -1,5 +1,226 @@
-[INFO  - 2018-01-14T16:11:19.048Z] GhostDriver - Main - running on port 57385
-[INFO  - 2018-01-14T16:11:19.470Z] Session [8e5da190-f945-11e7-8eb4-25da554a601f] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
-[INFO  - 2018-01-14T16:11:19.470Z] Session [8e5da190-f945-11e7-8eb4-25da554a601f] - page.customHeaders:  - {}
-[INFO  - 2018-01-14T16:11:19.470Z] Session [8e5da190-f945-11e7-8eb4-25da554a601f] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
-[INFO  - 2018-01-14T16:11:19.470Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 8e5da190-f945-11e7-8eb4-25da554a601f
+[INFO  - 2018-01-26T17:24:11.113Z] GhostDriver - Main - running on port 61451
+[INFO  - 2018-01-26T17:24:11.553Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2018-01-26T17:24:11.553Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.customHeaders:  - {}
+[INFO  - 2018-01-26T17:24:11.554Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2018-01-26T17:24:11.554Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: b949b4d0-02bd-11e8-8374-3956a7ca2b63
+[ERROR - 2018-01-26T17:24:14.851Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.onError - msg: ReferenceError: Can't find variable: jQuery
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-26T17:24:14.851Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.onError - stack:
+  global code (https://rent.591.com.tw/rent-detail-5341317.html:5)
+  insertBefore (:0)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:31)
+  d (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:34)
+  Uf (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:56)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:112)
+  vl (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:108)
+  Kg (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:114)
+  Xg (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:70)
+  push (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:71)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:71)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-26T17:24:19.190Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.onError - msg: ReferenceError: Can't find variable: jQuery
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-26T17:24:19.190Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.onError - stack:
+  global code (https://rent.591.com.tw/rent-detail-5924610.html:5)
+  insertBefore (:0)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:31)
+  d (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:34)
+  Uf (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:56)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:112)
+  vl (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:108)
+  Kg (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:114)
+  Xg (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:70)
+  push (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:71)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:71)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-26T17:24:19.769Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.onError - msg: ReferenceError: Can't find variable: jQuery
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-26T17:24:19.769Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.onError - stack:
+  global code (https://rent.591.com.tw/rent-detail-5883632.html:5)
+  insertBefore (:0)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:31)
+  d (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:34)
+  Uf (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:56)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:112)
+  vl (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:108)
+  Kg (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:114)
+  Xg (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:70)
+  push (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:71)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:71)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-26T17:24:20.431Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.onError - msg: ReferenceError: Can't find variable: jQuery
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-26T17:24:20.431Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.onError - stack:
+  global code (https://rent.591.com.tw/rent-detail-5886624.html:5)
+  insertBefore (:0)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:31)
+  d (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:34)
+  Uf (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:56)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:112)
+  vl (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:108)
+  Kg (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:114)
+  Xg (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:70)
+  push (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:71)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:71)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-26T17:24:21.472Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.onError - msg: ReferenceError: Can't find variable: jQuery
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-26T17:24:21.472Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.onError - stack:
+  global code (https://rent.591.com.tw/rent-detail-5885393.html:5)
+  insertBefore (:0)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:31)
+  d (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:34)
+  Uf (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:56)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:112)
+  vl (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:108)
+  Kg (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:114)
+  Xg (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:70)
+  push (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:71)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:71)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-26T17:24:27.542Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.onError - msg: ReferenceError: Can't find variable: jQuery
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-26T17:24:27.542Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.onError - stack:
+  global code (https://rent.591.com.tw/rent-detail-5974643.html:5)
+  insertBefore (:0)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:31)
+  d (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:34)
+  Uf (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:56)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:112)
+  vl (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:108)
+  Kg (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:114)
+  Xg (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:70)
+  push (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:71)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:71)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-26T17:24:33.073Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.onError - msg: ReferenceError: Can't find variable: jQuery
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-26T17:24:33.073Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.onError - stack:
+  global code (https://rent.591.com.tw/rent-detail-5854657.html:5)
+  insertBefore (:0)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:31)
+  d (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:34)
+  Uf (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:56)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:112)
+  vl (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:108)
+  Kg (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:114)
+  Xg (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:70)
+  push (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:71)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:71)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-26T17:24:35.793Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.onError - msg: ReferenceError: Can't find variable: jQuery
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-26T17:24:35.793Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.onError - stack:
+  global code (https://rent.591.com.tw/rent-detail-5975709.html:5)
+  insertBefore (:0)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:31)
+  d (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:34)
+  Uf (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:56)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:112)
+  vl (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:108)
+  Kg (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:114)
+  Xg (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:70)
+  push (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:71)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:71)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-26T17:24:38.738Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.onError - msg: ReferenceError: Can't find variable: jQuery
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-26T17:24:38.738Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.onError - stack:
+  global code (https://rent.591.com.tw/rent-detail-5894710.html:5)
+  insertBefore (:0)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:31)
+  d (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:34)
+  Uf (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:56)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:112)
+  vl (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:108)
+  Kg (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:114)
+  Xg (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:70)
+  push (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:71)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:71)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-26T17:24:43.186Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.onError - msg: ReferenceError: Can't find variable: jQuery
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-26T17:24:43.187Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.onError - stack:
+  global code (https://rent.591.com.tw/rent-detail-5928549.html:5)
+  insertBefore (:0)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:31)
+  d (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:34)
+  Uf (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:56)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:112)
+  vl (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:108)
+  Kg (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:114)
+  Xg (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:70)
+  push (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:71)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:71)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-26T17:24:43.725Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.onError - msg: ReferenceError: Can't find variable: jQuery
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-26T17:24:43.725Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.onError - stack:
+  global code (https://rent.591.com.tw/rent-detail-5896447.html:5)
+  insertBefore (:0)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:31)
+  d (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:34)
+  Uf (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:56)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:112)
+  vl (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:108)
+  Kg (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:114)
+  Xg (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:70)
+  push (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:71)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:71)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-26T17:24:47.558Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.onError - msg: ReferenceError: Can't find variable: jQuery
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-26T17:24:47.558Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.onError - stack:
+  global code (https://rent.591.com.tw/rent-detail-5868188.html:5)
+  insertBefore (:0)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:31)
+  d (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:34)
+  Uf (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:56)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:112)
+  vl (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:108)
+  Kg (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:114)
+  Xg (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:70)
+  push (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:71)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:71)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-26T17:24:49.404Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.onError - msg: ReferenceError: Can't find variable: jQuery
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-26T17:24:49.405Z] Session [b949b4d0-02bd-11e8-8374-3956a7ca2b63] - page.onError - stack:
+  global code (https://rent.591.com.tw/rent-detail-5925807.html:5)
+  insertBefore (:0)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:31)
+  d (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:34)
+  Uf (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:56)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:112)
+  vl (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:108)
+  Kg (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:114)
+  Xg (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:70)
+  push (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:71)
+  (anonymous function) (https://www.googletagmanager.com/gtm.js?id=GTM-K5L9PD:71)
+
+  phantomjs://platform/console++.js:263 in error

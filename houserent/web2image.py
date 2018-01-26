@@ -5,6 +5,31 @@ from django.core.files.temp import NamedTemporaryFile
 import requests
 
 
+from selenium import webdriver
+
+driver = webdriver.PhantomJS(executable_path='/Users/tsujitoe-mac/program/Python/houserent/houserent/static/node_modules/phantomjs/bin/phantomjs') # or add to your PATH
+driver.set_window_size(1024, 768) # optional
+
+
+infos = Devinfo.objects.all()
+for info in infos:
+	get_591=info.dev_url
+	driver.get(get_591)
+	driver.save_screenshot('screen.png')
+
+	filename_screen = 'screen-'+info.dev_address
+
+	img_temp = open('screen.png', 'rb')
+
+	#img_temp = NamedTemporaryFile(delete=True)
+	#img_temp.write(imgraw)
+	#img_temp.flush()
+
+	info.dev_screenshot_img.save('%s.png'%(filename_screen),File(img_temp), save=True)
+	print('已經截圖了-%s' % info.dev_address)
+
+
+"""
 #使用django-screamhot
 
 #host_url="http://tsujitoe.pythonanywhere.com"
@@ -31,7 +56,7 @@ for info in infos:
 	#else:
 	#	print('已經截圖了')
 	#	print('%s'%info.id)
-
+"""
 
 
 """
