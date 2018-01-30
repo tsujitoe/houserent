@@ -4,15 +4,19 @@ from django.core.files import File
 from django.core.files.temp import NamedTemporaryFile
 import requests
 
-
+from pyvirtualdisplay import Display
 from selenium import webdriver
 
-#Browser = webdriver.Chrome(executable_path='/Users/tsujitoe-mac/program/Python/houserent/houserent/static/browser/chromedriver_mac')
-Browser = webdriver.Firefox()
-WebUrl  = ('https://rent.591.com.tw/rent-detail-5894372.html')
-Browser.get(WebUrl)
-Browser.save_screenshot('test.png')
-Browser.quit()
+with Display():
+	#Browser = webdriver.Chrome(executable_path='/Users/tsujitoe-mac/program/Python/houserent/houserent/static/browser/chromedriver_mac')
+	Browser = webdriver.Firefox()
+	try:
+		WebUrl = ('https://rent.591.com.tw/rent-detail-5894372.html')
+		Browser.get(WebUrl)
+		Browser.save_screenshot('test.png')
+	finally:
+		Browser.quit()
+
 
 
 """
