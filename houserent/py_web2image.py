@@ -16,7 +16,7 @@ with Display():
 	try:
 		infos = Devinfo.objects.all()
 		for info in infos:
-			if info.dev_screenshot_img is None and info.dev_screenshot_yes == False:
+			if info.dev_screenshot_yes == False:
 				get_591 = info.dev_url
 				Browser.get(get_591)
 				Browser.save_screenshot('screen.png')
