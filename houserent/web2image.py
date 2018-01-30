@@ -7,9 +7,18 @@ import requests
 
 from selenium import webdriver
 
+#Browser = webdriver.Chrome(executable_path='/Users/tsujitoe-mac/program/Python/houserent/houserent/static/browser/chromedriver_mac')
+Browser = webdriver.Firefox()
+WebUrl  = ('https://rent.591.com.tw/rent-detail-5894372.html')
+Browser.get(WebUrl)
+Browser.save_screenshot('test.png')
+Browser.quit()
+
+
+"""
+# pythonanywhere 沒辦法使用 phantomJS
 driver = webdriver.PhantomJS(executable_path='/Users/tsujitoe-mac/program/Python/houserent/houserent/static/node_modules/phantomjs/bin/phantomjs') # or add to your PATH
 driver.set_window_size(1024, 768) # optional
-
 
 infos = Devinfo.objects.all()
 for info in infos:
@@ -27,6 +36,8 @@ for info in infos:
 
 	info.dev_screenshot_img.save('%s.png'%(filename_screen),File(img_temp), save=True)
 	print('已經截圖了-%s' % info.dev_address)
+"""
+
 
 
 """
