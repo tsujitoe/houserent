@@ -155,8 +155,8 @@ def get_work_good(request, pk):
 	
 	dev_house.dev_zone = soup.find("a", { "ga_label" : "detail_breadcrumbs_area" }).text
 	dev_house.dev_type =  soup.find_all("span", "value")[7].text
-	dev_house.dev_pattern = soup.find_all("span", "value")[5].text
-
+	pattern = soup.find_all("span", "value")[5].text
+	dev_house.dev_pattern = pattern.replace("(室)","")
 	dev_house.dev_source = '好房網'
 	
 
