@@ -17,7 +17,7 @@ class Dvenifoadmin(admin.ModelAdmin):
 		'classes': ('collapse',),
 		'fields':('dev_source', 'dev_address', 'dev_rent',
 			'dev_zone', 'dev_pattern', 
-			'dev_phone_img','dev_screenshot_img','dev_screenshot_yes'),
+			'dev_phone_img','dev_screenshot_img',),
 		}]
 	)
 	search_fields = ('dev_phone','dev_address',)

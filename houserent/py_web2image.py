@@ -16,7 +16,7 @@ with Display():
 	try:
 		infos = Devinfo.objects.all()
 		for info in infos:
-			if info.dev_screenshot_img is None and info.dev_screenshot_yes = False:
+			if info.dev_screenshot_img is None and info.dev_screenshot_yes == False:
 				get_591 = info.dev_url
 				Browser.get(get_591)
 				Browser.save_screenshot('screen.png')
@@ -29,6 +29,7 @@ with Display():
 
 				info.dev_screenshot_img.save('%s.png'%(filename_screen),File(img_temp), save=True)
 				info.dev_screenshot_yes = True
+				info.save()
 				print('截圖-%s' % info.dev_address)
 			else:
 				print('這個網址已經截圖過了-%s' % info.dev_address)
