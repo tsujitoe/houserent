@@ -1,41 +1,22 @@
 from devhouse.models import Devinfo
 
 from django.core.files import File
-#from django.core.files.temp import NamedTemporaryFile
-#import requests
+from django.core.files.temp import NamedTemporaryFile
+import requests
 
 from pyvirtualdisplay import Display
 from selenium import webdriver
 
-
-
 with Display():
 	#Browser = webdriver.Chrome(executable_path='/Users/tsujitoe-mac/program/Python/houserent/houserent/static/browser/chromedriver_mac')
 	Browser = webdriver.Firefox()
-
 	try:
-		infos = Devinfo.objects.all()
-		for info in infos:
-			get_591 = info.dev_url
-			Browser.get(get_591)
-			Browser.save_screenshot('screen.png')
-			filename_screen = 'screen-'+info.dev_address
-			img_temp = open('screen.png', 'rb')
-
-			#img_temp = NamedTemporaryFile(delete=True)
-			#img_temp.write(imgraw)
-			#img_temp.flush()
-
-			info.dev_screenshot_img.save('%s.png'%(filename_screen),File(img_temp), save=True)
-			print('已經截圖了-%s' % info.dev_address)
+		WebUrl = ('https://rent.591.com.tw/rent-detail-5894372.html')
+		Browser.get(WebUrl)
+		Browser.save_screenshot('test.png')
 	finally:
 		Browser.quit()
 
-
-
-	
-
-	
 
 
 """
