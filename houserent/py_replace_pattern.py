@@ -4,7 +4,8 @@ infos = Devinfo.objects.all()
 
 for info in infos:
 	try:
-		info.dev_pattern.replace("(室)","")
+		pattern = info.dev_pattern
+		info.dev_pattern = pattern.replace("房","嘿嘿嘿")
 		info.save()
 		print('更改成功')
 	except:
