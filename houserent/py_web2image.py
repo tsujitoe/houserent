@@ -16,26 +16,26 @@ with Display():
 	try:
 		infos = Devinfo.objects.all()
 		for info in infos:
-			get_591 = info.dev_url
-			Browser.get(get_591)
-			Browser.save_screenshot('screen.png')
-			filename_screen = 'screen-'+info.dev_address
-			img_temp = open('screen.png', 'rb')
+			if info.dev_screenshot_img is None and info.dev_screenshot_yes = False:
+				get_591 = info.dev_url
+				Browser.get(get_591)
+				Browser.save_screenshot('screen.png')
+				filename_screen = 'screen-'+info.dev_address
+				img_temp = open('screen.png', 'rb')
 
-			#img_temp = NamedTemporaryFile(delete=True)
-			#img_temp.write(imgraw)
-			#img_temp.flush()
+				#img_temp = NamedTemporaryFile(delete=True)
+				#img_temp.write(imgraw)
+				#img_temp.flush()
 
-			info.dev_screenshot_img.save('%s.png'%(filename_screen),File(img_temp), save=True)
-			print('已經截圖了-%s' % info.dev_address)
+				info.dev_screenshot_img.save('%s.png'%(filename_screen),File(img_temp), save=True)
+				info.dev_screenshot_yes = True
+				print('截圖-%s' % info.dev_address)
+			else:
+				print('這個網址已經截圖過了-%s' % info.dev_address)
 	finally:
 		Browser.quit()
 
 
-
-	
-
-	
 
 
 """
@@ -64,7 +64,8 @@ for info in infos:
 
 
 """
-#使用django-screamhot
+# 使用django-screamhot
+# 這個api背後還是PhantomJS
 
 #host_url="http://tsujitoe.pythonanywhere.com"
 host_url="http://127.0.0.1:8000"

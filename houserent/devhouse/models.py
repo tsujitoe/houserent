@@ -25,6 +25,7 @@ class Devinfo(models.Model):
 	dev_phone = models.CharField(verbose_name='電話', blank=True, null=True ,max_length=30)
 	dev_phone_img = models.ImageField(verbose_name='電話圖', upload_to='dev-phone', blank=True, null=True)
 	dev_screenshot_img = models.ImageField(verbose_name='網頁截圖', upload_to='dev-web', blank=True, null=True ,max_length=100)
+	dev_screenshot_yes = models.BooleanField(verbose_name='有截過圖嗎?', default=False)
 	dev_note = models.TextField(verbose_name='開發紀錄', default=' ', blank=True, null=True)
 	dev_tracetime = models.DateField(verbose_name='追蹤時間', blank=True, null=True)
 	class Meta:
