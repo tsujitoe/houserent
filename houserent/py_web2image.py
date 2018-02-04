@@ -1,6 +1,7 @@
 from devhouse.models import Devinfo
 
 from django.core.files import File
+from PIL import Image
 #from django.core.files.temp import NamedTemporaryFile
 #import requests
 
@@ -13,6 +14,7 @@ with Display():
 	#Browser = webdriver.Chrome(executable_path='/Users/tsujitoe-mac/program/Python/houserent/houserent/static/browser/chromedriver_mac')
 	Browser = webdriver.Firefox()
 
+	# 截圖-----------------
 	try:
 		infos = Devinfo.objects.all()
 		for info in infos:
@@ -20,22 +22,69 @@ with Display():
 				get_591 = info.dev_url
 				Browser.get(get_591)
 				Browser.save_screenshot('screen.png')
-				filename_screen = 'screen-'+info.dev_address
-				img_temp = open('screen.png', 'rb')
+				#filename_screen = 'screen-'+info.dev_address
+				#img_temp = open('screen.png', 'rb')
 
-				#img_temp = NamedTemporaryFile(delete=True)
-				#img_temp.write(imgraw)
-				#img_temp.flush()
-
-				info.dev_screenshot_img.save('%s.png'%(filename_screen),File(img_temp), save=True)
+				#info.dev_screenshot_img.save('%s.png'%(filename_screen),File(img_temp), save=True)
 				info.dev_screenshot_yes = True
 				info.save()
-				print('截圖-%s' % info.dev_address)
+				#print('截圖-%s' % info.dev_address)
+	
+
+				# 縮圖----------------
+				try:
+					im = Image.open('screen.png')
+					#print (im.format, im.size, im.mode)
+					if im.size != 600:
+						width = 600
+						ratio = float(width)/im.size [0]
+						height = int(im.size [1] * ratio)
+
+						nim = im.resize((width, height), Image.BILINEAR)
+						nim.save('resize.png')
+						img_temp = open('resize.png', 'rb')
+
+						filename_screen = 'resize-'+info.dev_address
+
+						info.dev_screenshot_img.save('%s.png'%(filename_screen),File(img_temp), save=True)
+	
+						info.save()
+					print("縮圖ok-%s"%(info.dev_address))
+				except:
+					print("哪邊有問題?-%s"%(info.dev_address))
+
 			else:
 				print('這個網址已經截圖過了-%s' % info.dev_address)
 	finally:
 		Browser.quit()
 
+
+
+
+
+
+infos = Devinfo.objects.all()
+for info in infos:
+	try:
+		im = Image.open(info.dev_screenshot_img)
+		#print (im.format, im.size, im.mode)
+		if im.size != 600:
+			width = 600
+			ratio = float(width)/im.size [0]
+			height = int(im.size [1] * ratio)
+
+			nim = im.resize((width, height), Image.BILINEAR)
+			nim.save('resize.png')
+			img_temp = open('resize.png', 'rb')
+
+			filename_screen = 'resize-'+info.dev_address
+
+			info.dev_screenshot_img.save('%s.png'%(filename_screen),File(img_temp), save=True)
+	
+			info.save()
+			print("縮圖ok-%s"%(info.dev_address))
+	except:
+		print("哪邊有問題?-%s"%(info.dev_address))
 
 
 
