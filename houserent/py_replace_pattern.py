@@ -14,9 +14,10 @@ for info in infos:
 		info.dev_pattern = pattern.replace("8坪","")
 		info.dev_pattern = pattern.replace("9坪","")
 		info.dev_pattern = pattern.replace("10坪","")
-		#info.dev_pattern = pattern.replace("11坪","")
-		#info.dev_pattern = pattern.replace("12坪","")
-		#info.dev_pattern = pattern.replace("13坪","")
+		info.dev_pattern = pattern.replace("11坪","")
+		info.dev_pattern = pattern.replace("12坪","")
+		info.dev_pattern = pattern.replace("13坪","")
+		info.dev_pattern = pattern.replace("15坪","")
 		info.save()
 		print('更改成功')
 	except:
