@@ -54,7 +54,7 @@ def street_update(request, pk):
 	return render(request, 'street_update.html', {'form': form, 'formset': formset, 'address': address })
 
 
-def  street_detail(request, pk):
+def street_detail(request, pk):
 	try:
 		address = MediaInfo.objects.get(pk=pk)
 	except MediaInfo.DoesNotExist:
@@ -94,8 +94,13 @@ def street_image(request, pk):
 
 
 
+
+
+"""
+以下搜集仲介的資訊地方
 # for fake tenant
 # just for 591
+"""
 
 def url_dev(request):
 	if request.method == 'POST':
@@ -107,11 +112,6 @@ def url_dev(request):
 		form = UrlForm(submit_title='建立')
 	return render(request, 'fake_url_create.html', {'form': form})
 
-"""
-try:
-except UnboundLocalError:
-	return render(request, 'url_repeat.html')
-"""
 
 def get_work(request, pk):
 	try:
@@ -167,6 +167,7 @@ def url_list(request, pk):
 
 
 
+################## 其他的問題
 
 """
 #for multi upload image

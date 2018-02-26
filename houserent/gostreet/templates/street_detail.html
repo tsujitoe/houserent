@@ -6,14 +6,16 @@
   <a href="{% url 'img_street' pk=address.pk %}" class="btn btn-default">上傳照片</a>
 
   <a href="{% url 'update_street' pk=address.pk %}" class="btn btn-default">修改資料</a>
+
+  <a href="{% url 'go_street' %}" class="btn btn-primary">新增其他案件</a>
   
   <h2>地址：{{ address.now_address }}</h2>
   <h2>電話：{{ address.now_phone }}</h2>
   
  
-  <h1>照片資訊：</h1>
+  <h3>照片資訊：</h3>
     {% for go_image in address.img_address.all %}
-      <h3>{{ go_image.image_note }}</h3>
+      <h4>{{ go_image.image_note }}</h4>
       <h4><img src="/media/{{ go_image.image }}" width="300px" /></h4>
       <hr />
     {% endfor %}

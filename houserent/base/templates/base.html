@@ -33,16 +33,6 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="dropdown">  
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">房客資訊<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="{% url 'tenant_get' %}">房客紀錄</a></li>
-            <li role="separator" class="divider"></li>
-            <li class="dropdown-header">電腦版</li>
-            <li><a href="../../../admin/devtenant/tenant/">房客管理</a></li>
-          </ul>
-        </li>
-
 
         <li class="dropdown">  
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">案件回報 <span class="caret"></span></a>
@@ -50,6 +40,16 @@
             <li><a href="{% url 'suite_list' %}">套房</a></li>
             <li><a href="#">住宅</a></li>
             <li><a href="#">店面</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">  
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">房客資訊<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'tenant_get' %}">房客紀錄</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">電腦版</li>
+            <li><a href="../../../admin/devtenant/tenant/">房客管理</a></li>
           </ul>
         </li>
 

@@ -17,11 +17,12 @@
   {% csrf_token %}
   {{ formset.management_form }}
   <div class="menu-item form-group">
-  {% crispy formset formset.helper %}
-  <hr size=30 />
+	{% crispy formset formset.helper %}
+	<hr size=30 />
   </div>
-  <a href="#" class="menu-item-add btn btn-default">新增照片項目</a>  
-  <button type="submit" class="btn btn-primary">上傳</button>
+  <a href="#" class="menu-item-add btn btn-default">新增照片項目</a> 
+  <button type="submit" class="btn btn-primary">上傳</button> 
+  
 </form>
 {% endblock content %}
 

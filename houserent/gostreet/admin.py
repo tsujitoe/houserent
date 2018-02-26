@@ -30,13 +30,15 @@ class MediaInfoadmin(AdminImageMixin, admin.ModelAdmin):
 	inlines = (ImageInline, )
 	fieldsets = (
 		['Main',{
-		'fields':('now_state', 'now_tracetime', 'now_address', 'now_phone'),
+		'fields':( 'now_manber', 'now_state', 'now_tracetime', 'now_address', 'now_phone', 'now_note'),
 		}],
 		['謄本資訊',{
 		'classes': ('collapse',),
 		'fields':('now_transcript_name', 'now_transcript_address', 'now_transcript_note'),
 		}]
 	)
+
+
 
 
 @admin.register(FakeInfo)

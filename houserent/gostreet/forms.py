@@ -27,9 +27,6 @@ class AdminImageWidget(AdminFileWidget):
 		output.append(super(AdminFileWidget, self).render(name, value, attrs))
 		return mark_safe(u''.join(output))
 
-
-
-
 class MediaInfoForm(forms.ModelForm):
 	#title = forms.CharField(max_length=100)
 	class Meta:
@@ -72,6 +69,9 @@ class MediaInlineFormset(BaseMediaInlineFormset, AdminImageMixin, ):
 		#self.helper.layout = Layout(InlineField('image','image_note'),)
 		#if submit_title:
 		#	self.helper.add_input(Submit('submit', submit_title))
+
+
+
 
 
 # for fake tenant--------------------------

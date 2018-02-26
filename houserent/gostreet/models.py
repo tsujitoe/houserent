@@ -22,7 +22,8 @@ class MediaInfo(models.Model):
 	now_type = models.CharField(verbose_name='類型', choices=type_items, default='新接' ,max_length=20)
 	now_address = models.CharField(verbose_name='場勘地址', blank=True, null=True, max_length=100)
 	now_phone = models.CharField(verbose_name='現場電話', blank=True, null=True, max_length=30)
-	now_note = models.TextField(verbose_name='紀錄備忘', default='租金價位: \n是否仲介: \n其他注意:', blank=True, null=True)
+	now_note = models.TextField(verbose_name='紀錄備忘', default='租金價位: \n是否仲介: \n其他注意:')
+	now_manber = models.CharField(verbose_name='開發人', blank=True, null=True, max_length=30)
 
 	#謄本資料
 	now_transcript_name = models.CharField(verbose_name='所有權人', blank=True, null=True, max_length=50)
@@ -46,11 +47,15 @@ class MediaInfo(models.Model):
 	url_tag.allow_tags = True
 
 
-	
+
 class Media(models.Model):
 	media_files = models.ForeignKey(MediaInfo, on_delete=models.SET_NULL, blank=True, null=True, related_name='img_address')
 	image = models.ImageField(verbose_name='', upload_to='street_photo/%Y-%m-%d', blank=True, null=True)
 	image_note = models.CharField(verbose_name='照片說明', default='.',blank=True, null=True, max_length=50)
+	
+	class Meta:
+		verbose_name_plural='現場照片'
+
 	def __str__(self):
 		return '圖片'
 
@@ -61,6 +66,11 @@ class Media(models.Model):
 	image_tag.allow_tags = True
 
 
+
+
+"""
+要做假房客的database
+"""
 
 class FakeInfo(models.Model):
 	state_items=(
