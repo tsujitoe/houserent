@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% load staticfiles %}
@@ -6,5 +5,12 @@
 {% block title %}建立案件 | {{ block.super }}{% endblock title %}
 
 {% block content %}
-{% crispy form %}
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h2 class="panel-title">掃街資訊-新案件</h2>
+	</div>
+    <div class="panel-body">
+    	{% crispy form %}
+    </div>
+</div>
 {% endblock content %}

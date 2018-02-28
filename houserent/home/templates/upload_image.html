@@ -11,10 +11,9 @@
 	</div>
     <div class="panel-body">
 	<form action="" method="post" enctype="multipart/form-data">
-	{% csrf_token %}
-		<label>案件地址：</label>
-    	<input name="address" class="form-control" placeholder="請寫上詳細地址...">
-		<br/>
+		{% csrf_token %}
+		{% crispy home_form %}
+		
 		<label>標題：</label>
     	<input name="title" class="form-control" placeholder="請寫上日期...">
 		<br/>

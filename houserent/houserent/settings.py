@@ -40,10 +40,6 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-
-    'crispy_forms',
-    'sorl.thumbnail',
-    'nested_admin',
        
     'django.contrib.admin',
     'django.contrib.auth',
@@ -52,8 +48,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    
-    # 設定
+
+    # 需要的app    
+    'crispy_forms',
+    'sorl.thumbnail',
+    'nested_admin',
+    'multiselectfield',
+
+    # 基本設定
     'pages',
     'base',
 
@@ -172,13 +174,22 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = '/media/'
 
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
-#STATIC_URL = '/static/'
-STATIC_ROOT = os.path.dirname(os.path.dirname(os.path.join(BASE_DIR, 'static')))
-#STATICFILES_DIRS = os.path.join(BASE_DIR, "static")
+STATIC_URL = '/static/'
+
 #PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+#STATIC_ROOT = os.path.dirname(os.path.dirname(os.path.join(BASE_DIR, 'static')))
+
+#STATICFILES_DIRS = os.path.join(BASE_DIR, "static")
+STATICFILES_DIRS = (
+    ("js", os.path.join(STATIC_ROOT,'js')),
+    ("css", os.path.join(STATIC_ROOT,'css')),
+    ("img", os.path.join(STATIC_ROOT,'img')),
+    )
+
+
 
 # Extra places for collectstatic to find static files.
 #STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)

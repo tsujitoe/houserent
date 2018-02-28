@@ -10,12 +10,19 @@
 <h2><a href="{{ address.get_absolute_url }}">{{ address.now_address }}</a></h2>
 <br />
 
-<form method="post" enctype ="multipart/form-data">
-  {% crispy form %}
-  {{ formset.management_form }}
-  {% crispy formset formset.helper %}
-  <button type="submit" class="btn btn-primary">修正</button>
-</form>
+<div class="panel panel-info">
+    <div class="panel-heading">
+      <h2 class="panel-title">掃街資訊-更正</h2>
+    </div>
+    <div class="panel-body">
+    	<form method="post" enctype ="multipart/form-data">
+  			{% crispy form %}
+  			{{ formset.management_form }}
+  			{% crispy formset formset.helper %}
+  			<button type="submit" class="btn btn-primary">修正</button>
+		</form>
+	</div>
+</div>
 {% endblock content %}
 
 

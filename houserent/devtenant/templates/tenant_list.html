@@ -4,10 +4,19 @@
 
 {% block content %}
 
-  <h2>{{ tenant.te_name }}</h2>
-  <h2>{{ tenant.te_phone }}</h2>
-  <h3>{{ tenant.te_note }}</h3>
-  <br>
-  <a href="{% url 'tenant_get' %}" class="btn btn-default">繼續更新</a>
+<a href="{% url 'tenant_get' %}" class="btn btn-default">繼續更新</a>
+<br>
+<br>
 
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h2 class="panel-title">房客資訊</h2>
+	</div>
+    <div class="panel-body">
+    	<h3>{{ tenant.te_name }}</h3>
+    	<h3>{{ tenant.te_phone }}</h3>
+    	<h4>{{ tenant.te_note }}</h4>
+  	</div>
+</div>
+  
 {% endblock content %}
