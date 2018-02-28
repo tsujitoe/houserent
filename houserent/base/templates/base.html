@@ -29,7 +29,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{% url 'home' %}">莊周系統</a>
+      <a class="navbar-brand" href="{% url 'index' %}">
+        莊周系統
+        <img src="https://v4-alpha.getbootstrap.com/assets/brand/bootstrap-solid.svg" width="20" height="20" class="d-inline-block align-top" alt="">
+      </a>
+
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -38,7 +42,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">案件回報 <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="{% url 'suite_list' %}">套房</a></li>
-            <li><a href="#">住宅</a></li>
+            <li><a href="{% url 'home' %}">住宅</a></li>
             <li><a href="#">店面</a></li>
           </ul>
         </li>
@@ -79,15 +83,15 @@
           </ul>
         </li>
 
-
-        <li><a href="{% url 'upload-new' %}">照片自由傳</a></li>
       
       </ul>
     </div>
   </div>
 </nav>
-{% block body %}
-{% endblock body %}
+<div class="container">
+{% block content %}
+{% endblock content %}
+</div>
 
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

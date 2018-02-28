@@ -3,30 +3,30 @@
 {% load crispy_forms_tags %}
 {% load staticfiles %}
 
-
-
 {% block content %}
-<h2><a href="{{ address.get_absolute_url }}">{{ address.now_address }}</a></h2>
-<br/>
 
 <div class="panel panel-info">
 	<div class="panel-heading">
-		<h3 class="panel-title">請上傳照片</h3>
+		<h2 class="panel-title">上傳住家的照片</h2>
 	</div>
     <div class="panel-body">
 	<form action="" method="post" enctype="multipart/form-data">
 	{% csrf_token %}
+		<label>案件地址：</label>
+    	<input name="address" class="form-control" placeholder="請寫上詳細地址...">
+		<br/>
+		<label>標題：</label>
+    	<input name="title" class="form-control" placeholder="請寫上日期...">
+		<br/>
+		<label>照片:</label>
 		<input type="file" class="form-control-file" name="docfile" multiple >
 		<br/>
+		
 		<button type="submit" class="btn btn-primary">上傳</button>
 	</form>
 	</div>
 </div>
 
+
 {% endblock content %}
-
-
-
-
-
 

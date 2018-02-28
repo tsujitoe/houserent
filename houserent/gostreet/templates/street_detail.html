@@ -3,6 +3,7 @@
 {% load staticfiles %}
 
 {% block content %}
+
   <a href="{% url 'img_street' pk=address.pk %}" class="btn btn-default">上傳照片</a>
 
   <a href="{% url 'update_street' pk=address.pk %}" class="btn btn-default">修改資料</a>

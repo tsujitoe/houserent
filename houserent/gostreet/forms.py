@@ -45,7 +45,7 @@ class MediaForm(forms.ModelForm, AdminImageMixin):
 	#image = forms.ModelMultipleChoiceField(queryset=MediaInfo.objects.all())
 	class Meta:
 		model = Media
-		fields = ('image', )
+		fields = '__all__'
 		widgets = {'image': AdminImageWidget,}
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)

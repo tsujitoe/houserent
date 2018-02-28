@@ -62,6 +62,31 @@ def street_detail(request, pk):
 	return render(request, 'street_detail.html', {'address': address})
 
 
+
+def street_image(request, pk):
+	try:
+		address = MediaInfo.objects.get(pk=pk)
+	except MediaInfo.DoesNotExist:
+		raise Http404
+
+	if request.method == "POST":
+		#form = MediaInlineFormset(request.POST, request.FILES, instance=address)
+		form = MediaForm(request.POST, request.FILES)
+		if form.is_valid():
+			if 'docfile' in request.FILES:
+				image_list = request.FILES.getlist('docfile')
+				for a_image in image_list:
+					#s = MediaForm(media_files=address, image=a_image)
+					s = Media(media_files=address, image=a_image)
+					s.save()
+			return redirect(address.get_absolute_url())
+	else:
+		form = MediaForm()
+	return render(request, 'street_image.html', {'address':address, 'form':form})
+
+
+
+"""
 def street_mul_image(request, pk):
 	try:
 		address = MediaInfo.objects.get(pk=pk)
@@ -75,22 +100,8 @@ def street_mul_image(request, pk):
 	else:
 		formset = MediaInlineFormset(instance=address)
 	return render(request, 'street_mul_image.html', {'address':address, 'formset':formset})
+"""
 
-
-
-def street_image(request, pk):
-	try:
-		address = MediaInfo.objects.get(pk=pk)
-	except MediaInfo.DoesNotExist:
-		raise Http404
-	if request.method == "POST":
-		form = MediaInlineFormset(request.POST, request.FILES, instance=address)
-		if form.is_valid():
-			form.save()
-			return redirect(address.get_absolute_url())
-	else:
-		form = MediaInlineFormset(instance=address)
-	return render(request, 'street_image.html', {'address':address, 'form':form})
 
 
 

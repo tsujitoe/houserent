@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     'crispy_forms',
     'sorl.thumbnail',
+    'nested_admin',
        
     'django.contrib.admin',
     'django.contrib.auth',
@@ -51,14 +52,21 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-
-    'suite', 
+    
+    # 設定
     'pages',
     'base',
+
+    # 案件系統
+    'suite', 
+    'home',
+    
+    # 開發系統
     'devhouse',
     'devtenant',
     'devstreet',
     'gostreet',
+
 
     ]
 
@@ -165,12 +173,10 @@ MEDIA_URL = '/media/'
 
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 #STATIC_URL = '/static/'
-#STATIC_ROOT = os.path.dirname(os.path.dirname(os.path.join(BASE_DIR, 'static')))
+STATIC_ROOT = os.path.dirname(os.path.dirname(os.path.join(BASE_DIR, 'static')))
 #STATICFILES_DIRS = os.path.join(BASE_DIR, "static")
 #PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 

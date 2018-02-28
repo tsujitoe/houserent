@@ -19,12 +19,14 @@ from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.conf import settings
 
-from pages.views import home
+from pages.views import index
 
 
 urlpatterns = [
-    url(r'^$', home, name='home'),
+    url(r'^$', index, name='index'),
+
     url(r'^suite/', include('suite.urls')),
+    url(r'^home/', include('home.urls')),
 
     url(r'^devhouse/', include('devhouse.urls')),
     url(r'^devtenant/', include('devtenant.urls')),
@@ -36,6 +38,7 @@ urlpatterns = [
 
     #url(r'^capture/',  include('screamshot.urls', namespace='screamshot', app_name='screamshot')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^nested_admin/', include('nested_admin.urls')),
     #path('admin/', admin.site.urls),       # 2.0 和 1.8 差別在url & path
     
 ]

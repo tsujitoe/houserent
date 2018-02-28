@@ -28,7 +28,7 @@ class Suites(models.Model):
 	suite_limit=models.CharField(verbose_name='限制條件', default='全部禁寵 | 部份禁寵:可貓 | 禁男',max_length=50)
 	suite_note=models.TextField(verbose_name='其他補充', default=' ')
 	class Meta:
-		verbose_name_plural='案件資訊'
+		verbose_name_plural='套房案件'
 	def __str__(self):
 		return self.suite_address
 	def get_absolute_url(self):
