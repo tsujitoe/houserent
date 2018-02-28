@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}{{ home_info.home_address }} | {{ block.super }}{% endblock title %}
+
+{% block content %}
+
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>地址</th><td>{{ home_info.home_address }}</td>
+      </tr>
+      <tr>
+        <th>房東</th><td>{{ home_info.home_master }}</td>
+      </tr>
+      <tr>
+        <th>電話</th><td>{{ home_info.home_master_phone }}</td>
+      </tr>
+      <tr>
+        <th>如何進入</th><td>{{ home_info.home_how_inter_door }}</td>
+      </tr>
+      <tr>
+        <th>類型</th><td>{{ home_info.home_type }}</td>
+      </tr>
+      <tr>
+        <th>坪數</th><td>{{ home_info.home_square }}</td>
+      </tr>
+      <tr>
+        <th>管理方式</th><td>{{ home_info.home_how_manage }}</td>
+      </tr>
+      <tr>
+        <th>垃圾處理</th><td>{{ home_info.home_garbage }}</td>
+      </tr>
+      <tr>
+        <th>停車位</th><td>{{ home_info.home_park }}</td>
+      </tr>
+      <tr>
+        <th>租金</th><td>{{ home_info.home_rent }}</td>
+      </tr>
+      <tr>
+        <th>租金包含</th><td>{{ home_info.home_include }}</td>
+      </tr>
+      <tr>
+        <th>其他雜費</th><td>{{ home_info.home_fee_note }}</td>
+      </tr>
+      <tr>
+        <th>設備包含</th><td>{{ home_info.home_equipment }}</td>
+      </tr>
+      <tr>
+        <th>寵物限制</th><td>{{ home_info.home_pet_limit }}</td>
+      </tr>
+      <tr>
+        <th>租客限制</th><td>{{ home_info.home_people_limit }}</td>
+      </tr>
+      <tr>
+        <th>其他補充</th><td>{{ home_info.home_note }}</td>
+      </tr>
+      <tr>
+      </tr>
+    </thead>
+  </table>
+
+
+{% endblock content %}
