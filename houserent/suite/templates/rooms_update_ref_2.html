@@ -1,0 +1,44 @@
+{# suite/templates/suite_update.html #}
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+
+{% block title %}更新 {{ suite.suite_address }} | {{ block.super }}{% endblock title %}
+
+
+{% block js %}
+{{ block.super }}
+<script src="{% static 'js/suite_update.js' %}"></script>
+{% endblock js %}
+
+
+{% block content %}
+
+<div class="panel panel-danger">
+    <div class="panel-heading">
+        <h3 class="panel-title">目前空房</h3>
+    </div>
+    <div class="panel-body">
+      <form method="post" enctype="multipart/form-data">{% csrf_token %}
+        
+        <!-- 手動一個一個產生 formset 中的 forms，並在它們外面包一層 div -->
+        {{ room_formset.management_form }}
+        {% for form in room_formset %}
+          {{ form.id }}
+          <div class="menu-item form-group">
+            {% crispy form room_formset.helper %}
+          </div>
+          <hr/>
+        {% endfor %}
+
+        <a href="#" class="menu-item-add btn btn-warning">新增房間數</a>
+        <button type="submit" class="btn btn-primary">更新空房</button>
+        <a href="{{ suite.get_absolute_url }}" class=" btn btn-info">返回案件</a>
+    
+      </form>
+    </div>
+</div>
+
+{% endblock content %}

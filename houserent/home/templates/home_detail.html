@@ -3,9 +3,10 @@
 
 {% block content %}
 
-<a href="{% url 'home_info_update' pk=home_info.pk %}" class="btn btn-default">更新案件資訊</a>
-<a href="{% url 'photo_create' pk=home_info.pk %}" class="btn btn-default">新增照片</a>
-<a href="{% url 'update_home' %}" class="btn btn-primary">新增其他案件</a>
+<h2>{{ home_info.home_address }}</h2>
+<a href="{% url 'photo_create' pk=home_info.pk %}" class="btn btn-default">上傳照片</a>
+<a href="{% url 'home_info_update' pk=home_info.pk %}" class="btn btn-default">更新資料</a>
+<a href="{% url 'home_list' %}" class="btn btn-primary">返回列表</a>
 
 
 <br/>
@@ -33,7 +34,7 @@
       <table class="table">
       <tr><td>租金:</td><td>{{ home_info.home_rent }}</td></tr>
       <tr><td>租金包含:</td><td>{{ home_info.home_include }}</td></tr>
-      <tr><td>其他雜費:</td><td>{{ home_info.home_fee_note }}</td></tr>
+      <tr><td>其他雜費:</td><td>{{ home_info.home_fee_note|linebreaks }}</td></tr>
       </table>
     </div>
 </div>
@@ -60,7 +61,7 @@
     </div>
     <div class="panel-body">
       <table class="table">
-      <tr><td>設備:</td><td>{{ home_info.home_equipment }}</td></tr>
+      <tr><td>設備包含:</td><td>{{ home_info.home_equipment }}</td></tr>
       </table>
     </div>
 </div>
@@ -73,7 +74,7 @@
       <table class="table">
       <tr><td>寵物限制:</td><td>{{ home_info.home_pet_limit }}</td></tr>
       <tr><td>租客限制:</td><td>{{ home_info.home_people_limit }}</td></tr>
-      <tr><td>補充資訊:</td><td>{{ home_info.home_note }}</td></tr>
+      <tr><td>補充資訊:</td><td>{{ home_info.home_note|linebreaks }}</td></tr>
       </table>
     </div>
 </div>
@@ -81,7 +82,7 @@
 
 <div class="panel panel-warning">
     <div class="panel-heading">
-        <h3 class="panel-title">照片</h3>
+        <h3 class="panel-title">相關照片</h3>
     </div>
     <div class="panel-body"> 
     {% for info in home_info.title_photo.all %}

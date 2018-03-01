@@ -5,10 +5,38 @@
 {% block title %}案件列表 | {{ block.super }}{% endblock title %}
 
 {% block content %}
-<a href="{% url 'suite_create' %}" class="btn btn-default">建立案件</a>
+<a href="{% url 'suite_create' %}" class="btn btn-primary">建立套房案件</a>
+<br/>
+<br/>
+
 {% for suite in suites %}
-<div class="suite">
-  <h2><a href="{{ suite.get_absolute_url }}">{{ suite.suite_address }}</a></h2>
+<div class="panel panel-danger">
+    <div class="panel-heading">
+        <h3 class="panel-title"><a href="{{ suite.get_absolute_url }}">{{ suite.suite_address }}</a></h3>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+      <tr><td>大門如何進入:</td><td>{{ suite.suite_how_inter_housedoor }}</td></tr>
+      <tr><td>房門如何進入:</td><td>{{ suite.suite_how_inter_housedoor }}</td></tr>
+      <tr><td>房東:</td><td>{{ suite.suite_master }}</td></tr>
+      <tr><td>電話:</td><td>{{ suite.suite_master_phone }}</td></tr>
+      </table>
+
+	<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h3 class="panel-title"><a href="{% url 'rooms_update' pk=suite.pk %}">目前空房</a></h3>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+      {{ suite.suite_room|linebreaks }}
+      </table>
+    </div>
+	</div>
+
+
+
+    </div>
 </div>
+
 {% endfor %}
 {% endblock content %}

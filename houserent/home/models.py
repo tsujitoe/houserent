@@ -85,14 +85,14 @@ class HomeInfo(models.Model):
 	#租金細目
 	home_rent=models.CharField(verbose_name='租金', default='', blank=True, null=True, max_length=20)
 	home_include=MultiSelectField(verbose_name='包含雜費',choices=include_items, blank=True, null=True, max_length=100)
-	home_fee_note=models.TextField(verbose_name='雜費補充', default=' | 管理費： \n | 電費： \n | 水費： \n | 其他： ')
+	home_fee_note=models.TextField(verbose_name='雜費補充', default='管理費： \n電費： \n水費： \n其他： ')
 	#設備包含
 	home_equipment=MultiSelectField(verbose_name='設備包含',choices=equipment_item, blank=True, null=True, max_length=100)
 	#條件限制
 	home_pet_limit=MultiSelectField(verbose_name='寵物限制', choices=pet_item, blank=True, null=True, max_length=100)
 	home_people_limit=MultiSelectField(verbose_name='身份限制', choices=people_item, blank=True, null=True, max_length=100)
 	#補充資訊
-	home_note=models.TextField(verbose_name='補充資訊', default=' | 如何進入大門： \n | 管理方式： \n | 垃圾處理： \n | 其他限制問題： \n')
+	home_note=models.TextField(verbose_name='補充資訊', default='如何進入大門： \n管理方式： \n垃圾處理： \n其他限制問題： \n')
 	class Meta:
 		verbose_name_plural='住宅案件'
 	def __str__(self):
@@ -104,7 +104,7 @@ class HomeInfo(models.Model):
 
 class HomeMediaInfo(models.Model):
 	home_address=models.ForeignKey(HomeInfo, on_delete=models.SET_NULL, blank=True, null=True, related_name='title_photo')
-	home_title=models.CharField(verbose_name='標題', max_length=60)
+	home_title=models.CharField(verbose_name='標題', default='', max_length=60)
 	class Meta:
 		verbose_name_plural='照片資訊'
 	def __str__(self):
@@ -121,7 +121,7 @@ class HomeMediaInfo(models.Model):
 
 class HomePhoto(models.Model):
 	h_title=models.ForeignKey(HomeMediaInfo, verbose_name='標題', on_delete=models.SET_NULL, blank=True, null=True, related_name='photo')
-	h_image = models.FileField(verbose_name='照片', upload_to='home_photo/%Y-%m-%d', )
+	h_image = models.FileField(verbose_name='照片', default='', upload_to='home_photo/%Y-%m-%d', )
 	h_date = models.DateTimeField(auto_now_add=True,)
 	class Meta:
 		verbose_name_plural='住宅照片'

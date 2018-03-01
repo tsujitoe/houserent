@@ -1,21 +1,23 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Suites, Rooms, SuitePhoto
+from .models import Suite, SuitePhoto
 
+
+"""
 class RoomInline(admin.StackedInline):
-	model= Rooms
+	model= Room
 	extra = 1
 
 class PhotoInline(admin.StackedInline):  
 	model = SuitePhoto
 	extra = 1
 
-@admin.register(Suites)
+@admin.register(Suite)
 class Suiteadmin(admin.ModelAdmin):
 	search_fields = ('suite_address',)
 	inlines = (RoomInline, PhotoInline, )
 	list_per_page = 20
-
+"""
 
 # admin.site.register(Suites)

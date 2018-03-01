@@ -6,61 +6,103 @@
 
 {% block content %}
 
-  <h1>{{ suite.suite_address }}</h1>
-  <a href="{% url 'photos_update' pk=suite.pk %}" class="btn btn-default">照片</a>
+  <h2>{{ suite.suite_address }}</h2>
+  <a href="{% url 'update_photo' pk=suite.pk %}" class="btn btn-default">上傳照片</a>
+  <a href="{% url 'rooms_update' pk=suite.pk %}" class="btn btn-default">更新空房</a>
+  <a href="{% url 'suite_update' pk=suite.pk %}" class="btn btn-default">更新案件</a>
+  <a href="{% url 'suite_list' %}" class="btn btn-primary">返回列表</a>
+  <br/>
+  <br/>
+  
 
-  <a href="{% url 'suite_update' pk=suite.pk %}" class="btn btn-default">更新案件資訊</a>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th>如何進入案件</th><td>{{ suite.suite_how_inter_housedoor }}</td>
-      </tr>
-      <tr>
-        <th>如何進入房門</th><td>{{ suite.suite_how_inter_roomdoor }}</td>
-      </tr>
-      <tr>
-        <th>租金包含</th><td>{{ suite.suite_include }}</td>
-      </tr>
-      <tr>
-        <th>租金不包含</th><td>{{ suite.suite_no_include }}</td>
-      </tr>
-      <tr>
-        <th>電費計算</th><td>{{ suite.suite_elecfee }}</td>
-      </tr>
-      <tr>
-        <th>垃圾處理</th><td>{{ suite.suite_garbage }}</td>
-      </tr>
-      <tr>
-        <th>洗衣</th><td>{{ suite.suite_wash }}</td>
-      </tr>
-      <tr>
-        <th>飲水</th><td>{{ suite.suite_drink }}</td>
-      </tr>
-      <tr>
-        <th>限制條件</th><td>{{ suite.suite_limit }}</td>
-      </tr>
-      <tr>
-        <th>其他補充</th><td>{{ suite.suite_note }}</td>
-      </tr>
-      <tr>
-      </tr>
-    </thead>
-  </table>
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">基本資訊</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+      <tr><td>地址:</td><td>{{ suite.suite_address }}</td></tr>
+      <tr><td>房東:</td><td>{{ suite.suite_master }}</td></tr>
+      <tr><td>電話:</td><td>{{ suite.suite_master_phone }}</td></tr>
+      <tr><td>大門如何進入:</td><td>{{ suite.suite_how_inter_housedoor }}</td></tr>
+      <tr><td>房門如何進入:</td><td>{{ suite.suite_how_inter_roomdoor }}</td></tr>
+      </table>
+    </div>
+</div>
 
-  <h2>目前空房</h2>
-  <a href="{% url 'rooms_update' pk=suite.pk %}" class="btn btn-default">更新空房資訊</a>
-  <table class="table">  
-    <thead>
-      <tr><th>房號</th><th>租金</th><th>其他優點</th></tr>
-    </thead>
-    <tbody>
-    {% for room in suite.rooms.all %}
-    {% if room.room_fullrent == True %}
-      <tr><td>{{ room.room_number }}</td><td>{{ room.room_rent }}</td><td>{{ room.room_description }}</td></tr>
-    {% endif %}
+
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h3 class="panel-title"><a href="{% url 'rooms_update' pk=suite.pk %}">目前空房</a></h3>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+      {{ suite.suite_room|linebreaks }}
+      </table>
+    </div>
+</div>
+
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">案件狀況</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+      <tr><td>型態:</td><td>{{ suite.suite_type }}</td></tr>
+      <tr><td>垃圾處理:</td><td>{{ suite.suite_garbage }}</td></tr>
+      <tr><td>洗衣設備:</td><td>{{ suite.suite_wash }}</td></tr>
+      <tr><td>飲水設備:</td><td>{{ suite.suite_drink }}</td></tr>
+      </table>
+    </div>
+</div>
+
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">租金包含</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+      <tr><td>電費計算:</td><td>{{ suite.suite_elecfee }}</td></tr>
+      <tr><td>租金包含:</td><td>{{ suite.suite_include }}</td></tr>
+      <tr><td>雜費補充:</td><td>{{ suite.suite_fee_not }}</td></tr>
+      </table>
+    </div>
+</div>
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">條件限制與其他資訊補充</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+      <tr><td>寵物限制:</td><td>{{ suite.suite_pet_limit }}</td></tr>
+      <tr><td>房客限制:</td><td>{{ suite.suite_people_limit }}</td></tr>
+      <tr><td>補充資訊:</td><td>{{ suite.suite_note|linebreaks }}</td></tr>
+      </table>
+    </div>
+</div>
+
+
+
+
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h3 class="panel-title">相關照片</h3>
+    </div>
+    <div class="panel-body"> 
+    {% for s in suite.title_photo.all %}
+      <h3>{{ s.s_title }}</h3>
+        {% for photo in s.photo.all %}
+          <img src="/media/{{ photo.s_image }}" width="300px" />
+        {% endfor %}
+      <hr/>
     {% endfor %}
-    </tbody>
+</div>
+    </div>
+</div>
 
 
 {% endblock content %}
