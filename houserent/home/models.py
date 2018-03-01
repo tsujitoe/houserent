@@ -43,29 +43,28 @@ class HomeInfo(models.Model):
 		('桌子', '桌子'),
 		('椅子', '椅子'),
 		('衣櫃', '衣櫃'),
-		('床', '床'),
+		('床組', '床組'),
 		('沙發', '沙發'),
-		('熱水器', '熱水器'),
 		('電視', '電視'),
 		('冰箱', '冰箱'),
 		('冷氣', '冷氣'),
+		('熱水器', '熱水器'),
 		('洗衣機', '洗衣機'),
 	)
 	pet_item=(
-		('全部禁寵','全部禁寵'),
 		('可寵','可寵'),
 		('可貓','可貓'),
 		('可狗','可狗'),
+		('全部禁寵','全部禁寵'),
 		('其他補充','其他補充'),
 	)
 	people_item=(
 		('學生','學生'),
-		('上班族','上班族'),
 		('家庭','家庭'),
+		('上班族','上班族'),
 		('禁男','禁男'),
 		('禁女','禁女'),
 		('禁小孩','禁小孩'),
-		('禁40以上','禁40以上'),
 		('禁拜拜','禁拜拜'),
 		('禁煮飯','禁煮飯'),
 		('其他補充','其他補充'),
@@ -81,9 +80,10 @@ class HomeInfo(models.Model):
 	home_square=models.CharField(verbose_name='坪數', default='10', max_length=10)
 	home_how_manage=models.CharField(verbose_name='管理方式', choices=manage_item , blank=True, null=True, max_length=20)
 	home_garbage=models.CharField(verbose_name='垃圾處理', choices=garbage_item, blank=True, null=True, max_length=20)
+	home_partten=models.CharField(verbose_name='格局', default=' 房 廳 衛 陽台', max_length=50)
 	home_park=models.CharField(verbose_name='車位', default='平面 | 機上/下，車號：', max_length=50)
 	#租金細目
-	home_rent=models.CharField(verbose_name='租金', blank=True, null=True, default='5000', max_length=20)
+	home_rent=models.CharField(verbose_name='租金', blank=True, null=True, default='', max_length=20)
 	home_include=MultiSelectField(verbose_name='包含雜費',choices=include_items, blank=True, null=True, max_length=100)
 	home_fee_note=models.TextField(verbose_name='雜費補充', default='管理費： \n電費： \n水費： \n其他： ')
 	#設備包含

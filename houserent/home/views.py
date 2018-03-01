@@ -27,6 +27,7 @@ def home_info_create(request):
 			home_info.home_square=home_form.cleaned_data['home_square']
 			home_info.home_how_manage=home_form.cleaned_data['home_how_manage']  
 			home_info.home_garbage=home_form.cleaned_data['home_garbage'] 
+			home_info.home_partten=home_form.cleaned_data['home_partten'] 
 			home_info.home_park=home_form.cleaned_data['home_park']
 			#租金細目
 			home_info.home_rent=home_form.cleaned_data['home_rent'] 

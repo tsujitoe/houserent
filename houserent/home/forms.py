@@ -13,23 +13,24 @@ class HomeInfoForm(forms.ModelForm):
 		super().__init__(*args, **kwargs)
 		self.helper = FormHelper()
 		self.helper.form_tag = False  # 我們要自己包。
+		#self.helper.form_show_labels = False
 		self.helper.layout = Layout(
 			HTML('<div class="panel panel-info"><div class="panel-heading"><h2 class="panel-title">基本資訊</h2></div><div class="panel-body">'),
 			Div(
-				Div('home_address', css_class="col-sm-8", ),
+				Div(Field('home_address' ,placeholder="詳細地址，範例：台中市西區中美街416號2樓"), css_class="col-sm-8", ),
 				Div('home_how_inter_door', css_class="col-sm-4"),
 				css_class = 'row'
 				), 
 			Div(
-				Div('home_master', css_class="col-sm-6"),
-				Div('home_master_phone', css_class="col-sm-6"),
+				Div(Field('home_master',placeholder="隔壁的老王?"), css_class="col-sm-6"),
+				Div(Field('home_master_phone',placeholder="手機格式要寫正確，範例：0938-389-945"), css_class="col-sm-6"),
 				css_class = 'row'
 				), 
 			
 			HTML('</div></div>'),
 
 			HTML('<div class="panel panel-info"><div class="panel-heading"><h2 class="panel-title">租金細目</h2></div><div class="panel-body">'),
-			'home_rent',
+			Field('home_rent',placeholder="租金多少錢?"),
 			InlineCheckboxes('home_include'),
 			Field('home_fee_note' ,rows=5, ),
 			HTML('</div></div>'),
@@ -42,7 +43,11 @@ class HomeInfoForm(forms.ModelForm):
 				Div('home_garbage', css_class="col-sm-3"),
 				css_class = 'row'
 				), 
-			'home_park',
+			Div(
+				Div('home_partten', css_class="col-sm-6"),
+				Div('home_park', css_class="col-sm-6"),
+				css_class = 'row'
+				), 
 			HTML('</div></div>'),
 
 			HTML('<div class="panel panel-info"><div class="panel-heading"><h2 class="panel-title">設備</h2></div><div class="panel-body">'),
@@ -51,29 +56,11 @@ class HomeInfoForm(forms.ModelForm):
 
 			HTML('<div class="panel panel-info"><div class="panel-heading"><h2 class="panel-title">條件限制與其他資訊補充</h2></div><div class="panel-body">'),
 			InlineCheckboxes('home_pet_limit'),
-			InlineCheckboxes('home_people_limit'),
+			InlineCheckboxes('home_people_limit', css_class=""),
 			Field('home_note' ,rows=5, ),
 			HTML('</div></div>'),
 		)
 
-
-"""
-
-<div class="panel panel-info">
-	<div class="panel-heading">
-		<h2 class="panel-title">新增 住家案件</h2>
-	</div>
-    <div class="panel-body">
-		<form method="post" enctype="multipart/form-data">
-			{% csrf_token %}
-			{% crispy home_form %}
-	</div>
-
-
-
-<label class="checkbox-inline">
-</label>
-"""
 
 class HomePhotoForm(forms.ModelForm):
 	#h_image = forms.ImageField(required=False)
