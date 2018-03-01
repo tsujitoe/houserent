@@ -17,13 +17,13 @@ class HomeInfoForm(forms.ModelForm):
 		self.helper.layout = Layout(
 			HTML('<div class="panel panel-info"><div class="panel-heading"><h2 class="panel-title">基本資訊</h2></div><div class="panel-body">'),
 			Div(
-				Div(Field('home_address' ,placeholder="詳細地址，範例：台中市西區中美街416號2樓"), css_class="col-sm-8", ),
+				Div(Field('home_address' ,placeholder="詳細地址：台中市西區中美街416號2樓"), css_class="col-sm-8", ),
 				Div('home_how_inter_door', css_class="col-sm-4"),
 				css_class = 'row'
 				), 
 			Div(
 				Div(Field('home_master',placeholder="隔壁的老王?"), css_class="col-sm-6"),
-				Div(Field('home_master_phone',placeholder="手機格式要寫正確，範例：0938-389-945"), css_class="col-sm-6"),
+				Div(Field('home_master_phone',placeholder="格式要正確，範例：0938-389-945"), css_class="col-sm-6"),
 				css_class = 'row'
 				), 
 			
@@ -37,15 +37,15 @@ class HomeInfoForm(forms.ModelForm):
 
 			HTML('<div class="panel panel-info"><div class="panel-heading"><h2 class="panel-title">案件格局</h2></div><div class="panel-body">'),
 			Div(
-				Div(Field('home_square', placeholder="目測大概的坪數即可"), css_class="col-sm-3"),
+				Div(Field('home_square', placeholder="目測大概坪數"), css_class="col-sm-3"),
 				Div('home_type', css_class="col-sm-3"),
 				Div('home_how_manage', css_class="col-sm-3"),
 				Div('home_garbage', css_class="col-sm-3"),
 				css_class = 'row'
 				), 
 			Div(
-				Div(Field('home_partten', placeholder="範例：3房2廳1衛1陽台，可以簡寫3R2T1W1Y"), css_class="col-sm-6"),
-				Div(Field('home_park', placeholder="格式：車號(含樓層)：，平面/機上/機下，範例：車號：B4-203，機上"), css_class="col-sm-6"),
+				Div(Field('home_partten', placeholder="3房2廳1衛1陽，簡寫3R2T1W1Y"), css_class="col-sm-6"),
+				Div(Field('home_park', placeholder="範例：車號：B4-203，機上"), css_class="col-sm-6"),
 				css_class = 'row'
 				),
 			HTML('</div></div>'),

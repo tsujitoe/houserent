@@ -9,6 +9,10 @@ from .models import HomeInfo, HomeMediaInfo, HomePhoto
 from .forms import HomeInfoForm, HomePhotoForm
 
 
+def home_info_list(request):
+	home_info = HomeInfo.objects.all()
+	return render(request, 'home_list.html', {'home_info': home_info})
+
 def home_info_create(request):
 	if request.method == 'POST':
 		home_form = HomeInfoForm(request.POST, request.FILES)
@@ -98,11 +102,6 @@ def photo_create(request, pk):
 			return HttpResponse('照片存失敗了')
 		return redirect(home_info.get_absolute_url())
 	return render(request, 'upload_image.html', {'home_info':home_info})
-
-
-def home_info_list(self):
-	return HttpResponse('home_info_list')
-
 
 
 

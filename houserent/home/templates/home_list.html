@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}案件列表 | {{ block.super }}{% endblock title %}
+
+{% block content %}
+<a href="{% url 'update_home' %}" class="btn btn-primary">新增案件</a>
+<br/>
+<br/>
+{% for home in home_info %}
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title"><a href="{{ home.get_absolute_url }}">{{ home.home_address }}</a></h3>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+      <tr><td>租金:</td><td>{{ home.home_rent }}</td></tr>
+      <tr><td>如何進入:</td><td>{{ home.home_rent }}</td></tr>
+      <tr><td>房東:</td><td>{{ home.home_master }}</td></tr>
+      <tr><td>電話:</td><td>{{ home.home_master_phone }}</td></tr>      
+      </table>
+    </div>
+</div>
+
+
+{% endfor %}
+
+{% endblock content %}
