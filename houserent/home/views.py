@@ -11,7 +11,7 @@ from .forms import HomeInfoForm, HomePhotoForm
 
 def home_info_create(request):
 	if request.method == 'POST':
-		home_form = HomeInfoForm(request.POST, request.FILES, submit_title=None)
+		home_form = HomeInfoForm(request.POST, request.FILES)
 		#img_form = HomePhotoForm(request.POST, request.FILES)
 		#if home_form.is_valid() and img_form.is_valid():
 		if home_form.is_valid():
