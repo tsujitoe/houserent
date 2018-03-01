@@ -21,7 +21,7 @@ class HomeMediaInfoadmin(NestedModelAdmin):
 class HomeMediaInfoInline(NestedStackedInline):
 	model = HomeMediaInfo
 	extra = 1
-	#readonly_fields = ('home_title',)
+	#readonly_fields = ('url_tag',)
 	#exclude = ('home_title',)
 	inlines = (PhotoInline, )
 

@@ -10,8 +10,6 @@ from django.forms.models import inlineformset_factory
 
 from .models import MediaInfo, Media, FakeInfo
 
-
-
 from django.contrib.admin.widgets import AdminFileWidget
 from django.utils.safestring import mark_safe
 from sorl.thumbnail import get_thumbnail

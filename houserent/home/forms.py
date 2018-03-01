@@ -2,7 +2,7 @@ from django import forms
 from .models import HomeInfo, HomeMediaInfo, HomePhoto
 
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Submit, Fieldset, HTML
+from crispy_forms.layout import Layout, Fieldset, HTML
 from crispy_forms.bootstrap import InlineCheckboxes, Field, Div
 
 class HomeInfoForm(forms.ModelForm):
@@ -37,17 +37,17 @@ class HomeInfoForm(forms.ModelForm):
 
 			HTML('<div class="panel panel-info"><div class="panel-heading"><h2 class="panel-title">案件格局</h2></div><div class="panel-body">'),
 			Div(
-				Div('home_square', css_class="col-sm-3"),
+				Div(Field('home_square', placeholder="目測大概的坪數即可"), css_class="col-sm-3"),
 				Div('home_type', css_class="col-sm-3"),
 				Div('home_how_manage', css_class="col-sm-3"),
 				Div('home_garbage', css_class="col-sm-3"),
 				css_class = 'row'
 				), 
 			Div(
-				Div('home_partten', css_class="col-sm-6"),
-				Div('home_park', css_class="col-sm-6"),
+				Div(Field('home_partten', placeholder="範例：3房2廳1衛1陽台，可以簡寫3R2T1W1Y"), css_class="col-sm-6"),
+				Div(Field('home_park', placeholder="格式：車號(含樓層)：，平面/機上/機下，範例：車號：B4-203，機上"), css_class="col-sm-6"),
 				css_class = 'row'
-				), 
+				),
 			HTML('</div></div>'),
 
 			HTML('<div class="panel panel-info"><div class="panel-heading"><h2 class="panel-title">設備</h2></div><div class="panel-body">'),

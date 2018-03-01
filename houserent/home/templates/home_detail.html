@@ -3,61 +3,98 @@
 
 {% block content %}
 
-  
-  <table class="table">
-    <thead>
-      <tr>
-        <th>地址</th><td>{{ home_info.home_address }}</td>
-      </tr>
-      <tr>
-        <th>房東</th><td>{{ home_info.home_master }}</td>
-      </tr>
-      <tr>
-        <th>電話</th><td>{{ home_info.home_master_phone }}</td>
-      </tr>
-      <tr>
-        <th>如何進入</th><td>{{ home_info.home_how_inter_door }}</td>
-      </tr>
-      <tr>
-        <th>類型</th><td>{{ home_info.home_type }}</td>
-      </tr>
-      <tr>
-        <th>坪數</th><td>{{ home_info.home_square }}</td>
-      </tr>
-      <tr>
-        <th>管理方式</th><td>{{ home_info.home_how_manage }}</td>
-      </tr>
-      <tr>
-        <th>垃圾處理</th><td>{{ home_info.home_garbage }}</td>
-      </tr>
-      <tr>
-        <th>停車位</th><td>{{ home_info.home_park }}</td>
-      </tr>
-      <tr>
-        <th>租金</th><td>{{ home_info.home_rent }}</td>
-      </tr>
-      <tr>
-        <th>租金包含</th><td>{{ home_info.home_include }}</td>
-      </tr>
-      <tr>
-        <th>其他雜費</th><td>{{ home_info.home_fee_note }}</td>
-      </tr>
-      <tr>
-        <th>設備包含</th><td>{{ home_info.home_equipment }}</td>
-      </tr>
-      <tr>
-        <th>寵物限制</th><td>{{ home_info.home_pet_limit }}</td>
-      </tr>
-      <tr>
-        <th>租客限制</th><td>{{ home_info.home_people_limit }}</td>
-      </tr>
-      <tr>
-        <th>其他補充</th><td>{{ home_info.home_note }}</td>
-      </tr>
-      <tr>
-      </tr>
-    </thead>
-  </table>
+<a href="{% url 'home_info_update' pk=home_info.pk %}" class="btn btn-default">更新案件資訊</a>
+<a href="{% url 'photo_create' pk=home_info.pk %}" class="btn btn-default">新增照片</a>
+<a href="{% url 'home' %}" class="btn btn-primary">新增其他案件</a>
+
+
+<br/>
+<br/>
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">基本資訊</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+      <tr><td>地址:</td><td>{{ home_info.home_address }}</td></tr>
+      <tr><td>房東:</td><td>{{ home_info.home_master }}</td></tr>
+      <tr><td>電話:</td><td>{{ home_info.home_master_phone }}</td></tr>
+      <tr><td>如何進入:</td><td>{{ home_info.home_how_inter_door }}</td></tr>
+      </table>
+    </div>
+</div>
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">租金細目</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+      <tr><td>租金:</td><td>{{ home_info.home_rent }}</td></tr>
+      <tr><td>租金包含:</td><td>{{ home_info.home_include }}</td></tr>
+      <tr><td>其他雜費:</td><td>{{ home_info.home_fee_note }}</td></tr>
+      </table>
+    </div>
+</div>
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">案件格局</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+      <tr><td>型態:</td><td>{{ home_info.home_type }}</td></tr>
+      <tr><td>格局:</td><td>{{ home_info.home_partten }}</td></tr>
+      <tr><td>坪數:</td><td>{{ home_info.home_square }}</td></tr>
+      <tr><td>管理方式:</td><td>{{ home_info.home_how_manage }}</td></tr>
+      <tr><td>垃圾處理:</td><td>{{ home_info.home_garbage }}</td></tr>
+      <tr><td>停車位:</td><td>{{ home_info.home_park }}</td></tr>
+      </table>
+    </div>
+</div>
+       
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">設備</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+      <tr><td>設備:</td><td>{{ home_info.home_equipment }}</td></tr>
+      </table>
+    </div>
+</div>
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">條件限制與其他資訊補充</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+      <tr><td>寵物限制:</td><td>{{ home_info.home_pet_limit }}</td></tr>
+      <tr><td>租客限制:</td><td>{{ home_info.home_people_limit }}</td></tr>
+      <tr><td>補充資訊:</td><td>{{ home_info.home_note }}</td></tr>
+      </table>
+    </div>
+</div>
+
+
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h3 class="panel-title">照片</h3>
+    </div>
+    <div class="panel-body"> 
+    {% for info in home_info.title_photo.all %}
+      <h3>{{ info.home_title }}</h3>
+        {% for photo in info.photo.all %}
+          <img src="/media/{{ photo.h_image }}" width="300px" />
+        {% endfor %}
+      <hr/>
+    {% endfor %}
+</div>
+    </div>
+</div>
+
 
 
 {% endblock content %}

@@ -11,7 +11,7 @@ from .forms import HomeInfoForm, HomePhotoForm
 
 def home_info_create(request):
 	if request.method == 'POST':
-		home_form = HomeInfoForm(request.POST, request.FILES)
+		home_form = HomeInfoForm(request.POST, request.FILES, submit_title=None)
 		#img_form = HomePhotoForm(request.POST, request.FILES)
 		#if home_form.is_valid() and img_form.is_valid():
 		if home_form.is_valid():
@@ -43,32 +43,13 @@ def home_info_create(request):
 
 			home_info.save()
 
-			"""
-			home_address = request.POST.get('address', '')
-			home_info = HomeInfo.objects.create(home_address = home_address)
-			home_info.save()
-			"""
-			"""
-			# 2 agree
-			info_title = request.POST.get('title', '')
-			info = HomeMediaInfo.objects.create(home_address=home_info, home_title=info_title)
-			info.save()
-
-			# 3 agree
-			if 'docfile' in request.FILES:
-				image_list = request.FILES.getlist('docfile')
-				for a_image in image_list:
-					s = HomePhoto(h_title=info, h_image=a_image)
-					s.save()
-				#return HttpResponse('upload ok!')
-			"""
 			return redirect(home_info.get_absolute_url())
 		else:
 			print(home_form.errors)
 			return HttpResponse('upload QQ !')
 	else:
 		home_form = HomeInfoForm()
-	return render(request,'upload_image.html', {'home_form': home_form})
+	return render(request,'upload_home_info.html', {'home_form': home_form})
 
 
 
@@ -78,22 +59,50 @@ def home_info_detail(request, pk):
 	except HomeInfo.DoesNotExist:
 		raise Http404
 	return render(request, 'home_detail.html', {'home_info': home_info})
-"""
-
-  <a href="{% url 'photo_create' pk=home_info.pk %}" class="btn btn-default">新增相簿</a>
-  <a href="{% url 'home_info_update' pk=home_info.pk %}" class="btn btn-default">更新案件資訊</a>
-"""
 
 
+def home_info_update(request, pk):	
+	try:
+		home_info = HomeInfo.objects.get(pk=pk)
+	except HomeInfo.DoesNotExist:
+		raise Http404
+	
+	if request.method == 'POST':
+		form = HomeInfoForm(request.POST, instance=home_info)
+		if form.is_valid():
+			home_info=form.save()
+			return redirect(home_info.get_absolute_url())
+	else:
+		form = HomeInfoForm(instance=home_info)
+	return render(request, 'home_update.html', {'form': form, 'home_info': home_info, })
 
+
+def photo_create(request, pk):
+	try:
+		# 1 agree
+		home_info = HomeInfo.objects.get(pk=pk)
+	except HomeInfo.DoesNotExist:
+		raise Http404
+	if request.method == "POST":
+		# 2 agree
+		info_title = request.POST.get('title', '')
+		info = HomeMediaInfo.objects.create(home_address=home_info, home_title=info_title)
+		info.save()
+		# 3 agree
+		if 'docfile' in request.FILES:
+			image_list = request.FILES.getlist('docfile')
+			for a_image in image_list:
+				s = HomePhoto.objects.create(h_title=info, h_image=a_image)
+				s.save()
+		else:
+			return HttpResponse('照片存失敗了')
+		return redirect(home_info.get_absolute_url())
+	return render(request, 'upload_image.html', {'home_info':home_info})
 
 
 def home_info_list(self):
 	return HttpResponse('home_info_list')
 
-def home_info_update(request, self):
-	return HttpResponse('home_info_update')
 
-def photo_create(request, self):
-	return HttpResponse('photo_create')
+
 

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}更新-{{ home_info.home_address }} | {{ block.super }}{% endblock title %}endblock title %}
+
+{% block content %}
+
+<form method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	{% crispy form %}
+	<button type="submit" class="btn btn-primary">更新</button>
+</form>
+{% endblock content %}
