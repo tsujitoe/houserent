@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     # 案件系統
     'suite', 
     'home',
+    'store',
     
     # 開發系統
     'devhouse',

@@ -27,19 +27,22 @@ urlpatterns = [
 
     url(r'^suite/', include('suite.urls')),
     url(r'^home/', include('home.urls')),
+    url(r'^store/', include('store.urls')),
 
     url(r'^devhouse/', include('devhouse.urls')),
     url(r'^devtenant/', include('devtenant.urls')),
-    url(r'^devstreet/', include('devstreet.urls')),
-    #url(r'^$', lambda x: HttpResponseRedirect('/devstreet/new/')),
     url(r'^gostreet/', include('gostreet.urls')),
+    #url(r'^devstreet/', include('devstreet.urls')),
+    #url(r'^$', lambda x: HttpResponseRedirect('/devstreet/new/')),
+    
 
     # use app
 
     #url(r'^capture/',  include('screamshot.urls', namespace='screamshot', app_name='screamshot')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^nested_admin/', include('nested_admin.urls')),
     #path('admin/', admin.site.urls),       # 2.0 和 1.8 差別在url & path
+    url(r'^nested_admin/', include('nested_admin.urls')),
+    
     
 ]
 

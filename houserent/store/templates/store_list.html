@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}案件列表 | {{ block.super }}{% endblock title %}
+
+{% block content %}
+<a href="{% url 'update_store' %}" class="btn btn-primary">新增店面案件</a>
+<br/>
+<br/>
+{% for store in store_info %}
+<div class="panel panel-danger">
+    <div class="panel-heading">
+        <h3 class="panel-title"><a href="{{ store.get_absolute_url }}">{{ store.store_address }}</a></h3>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+      <tr><td>租金:</td><td>{{ store.store_rent }}</td></tr>
+      <tr><td>如何進入:</td><td>{{ store.store_how_inter_door }}</td></tr>
+      </table>
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+        <h3 class="panel-title">格局介紹</a></h3>
+        </div>
+        <div class="panel-body">
+        <table class="table">
+          <tr><td>型態:</td><td>{{ store.store_type }}</td></tr>
+          <tr><td>格局:</td><td>{{ store.store_partten }}</td></tr>
+          <tr><td>坪數:</td><td>{{ store.store_square }}</td></tr>
+          <tr><td>使用樓層:</td><td>{{ store.store_floor }}</td></tr>
+        </table>
+        </div>
+      </div>
+      
+    </div>
+</div>
+
+
+{% endfor %}
+
+{% endblock content %}

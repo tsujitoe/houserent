@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="panel panel-warning">
+	<div class="panel-heading">
+		<h3 class="panel-title">[ 新增 ] 住家照片</h3>
+	</div>
+	<div class="panel-body">
+	<form method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		<label>標題：</label>
+    	<input name="title" class="form-control" placeholder="請寫上日期...">
+		<br/>
+		<label>照片:</label>
+		<input type="file" class="form-control-file" name="docfile" multiple >
+		<br/>
+		<button type="submit" class="btn btn-primary">上傳</button>
+	</form>
+	</div>
+</div>
+
+
+
+
+{% endblock content %}
+

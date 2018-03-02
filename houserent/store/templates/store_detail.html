@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block title %}{{ store_info.store_address }} | {{ block.super }}{% endblock title %}
+
+{% block content %}
+
+<h2>{{ store_info.store_address }}</h2>
+<a href="{% url 'photo_create' pk=store_info.pk %}" class="btn btn-default">上傳照片</a>
+<a href="{% url 'store_info_update' pk=store_info.pk %}" class="btn btn-default">更新資料</a>
+<a href="{% url 'store_list' %}" class="btn btn-primary">返回列表</a>
+
+
+<br/>
+<br/>
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">基本資訊</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+      <tr><td>地址:</td><td>{{ store_info.store_address }}</td></tr>
+      <tr><td>房東:</td><td>{{ store_info.store_master }}</td></tr>
+      <tr><td>電話:</td><td>{{ store_info.store_master_phone }}</td></tr>
+      <tr><td>如何進入:</td><td>{{ store_info.store_how_inter_door }}</td></tr>
+      </table>
+    </div>
+</div>
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">租金細目</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+      <tr><td>租金:</td><td>{{ store_info.store_rent }}</td></tr>
+      <tr><td>租金包含:</td><td>{{ store_info.store_include }}</td></tr>
+      <tr><td>其他雜費:</td><td>{{ store_info.store_fee_note|linebreaks }}</td></tr>
+      </table>
+    </div>
+</div>
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">案件格局</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+      <tr><td>型態:</td><td>{{ store_info.store_type }}</td></tr>
+      <tr><td>格局:</td><td>{{ store_info.store_partten }}</td></tr>
+      <tr><td>坪數:</td><td>{{ store_info.store_square }}</td></tr>
+      <tr><td>使用樓層:</td><td>{{ store_info.store_floor }}</td></tr>
+      <tr><td>管理方式:</td><td>{{ store_info.store_how_manage }}</td></tr>
+      <tr><td>垃圾處理:</td><td>{{ store_info.store_garbage }}</td></tr>
+      <tr><td>停車位:</td><td>{{ store_info.store_park }}</td></tr>
+      </table>
+    </div>
+</div>
+       
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">設備</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+      <tr><td>設備包含:</td><td>{{ store_info.store_equipment }}</td></tr>
+      </table>
+    </div>
+</div>
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">條件限制與其他資訊補充</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+      <tr><td>租客限制:</td><td>{{ store_info.store_people_limit }}</td></tr>
+      <tr><td>補充資訊:</td><td>{{ store_info.store_note|linebreaks }}</td></tr>
+      </table>
+    </div>
+</div>
+
+
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h3 class="panel-title">相關照片</h3>
+    </div>
+    <div class="panel-body"> 
+    {% for info in store_info.title_photo.all %}
+      <h3>{{ info.store_title }}</h3>
+        {% for photo in info.photo.all %}
+          <img src="/media/{{ photo.h_image }}" width="300px" />
+        {% endfor %}
+      <hr/>
+    {% endfor %}
+</div>
+    </div>
+</div>
+
+
+
+{% endblock content %}
