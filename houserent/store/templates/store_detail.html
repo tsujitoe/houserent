@@ -88,7 +88,7 @@
     {% for info in store_info.title_photo.all %}
       <h3>{{ info.store_title }}</h3>
         {% for photo in info.photo.all %}
-          <img src="/media/{{ photo.h_image }}" width="300px" />
+          <img src="/media/{{ photo.s_image }}" width="300px" />
         {% endfor %}
       <hr/>
     {% endfor %}
