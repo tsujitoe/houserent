@@ -17,13 +17,13 @@ class HomeMediaInfoadmin(NestedModelAdmin):
 	inlines = (PhotoInline, )
 	list_per_page = 20
 
-
 class HomeMediaInfoInline(NestedStackedInline):
 	model = HomeMediaInfo
 	extra = 1
 	#readonly_fields = ('url_tag',)
 	#exclude = ('home_title',)
 	inlines = (PhotoInline, )
+
 
 @admin.register(HomeInfo)
 class HomeInfoadmin(NestedModelAdmin):

@@ -88,12 +88,12 @@ class Suite(models.Model):
 	#租金包含
 	suite_elecfee=models.CharField(verbose_name='電費計算', default='5元 | 台電,',max_length=10)
 	suite_include=MultiSelectField(verbose_name='包含雜費',choices=include_items, blank=True, null=True, max_length=100)
-	suite_fee_note=models.TextField(verbose_name='雜費補充', default=' | 管理費： \n | 電費： \n | 水費： \n | 其他： ')
+	suite_fee_note=models.TextField(verbose_name='雜費補充', default='管理費： \n電費： \n水費： \n其他： ')
 	#限制條件
 	suite_pet_limit=MultiSelectField(verbose_name='寵物限制', choices=pet_item, blank=True, null=True, max_length=100)
 	suite_people_limit=MultiSelectField(verbose_name='身份限制', choices=people_item, blank=True, null=True, max_length=100)
 	#補充資訊
-	suite_note=models.TextField(verbose_name='補充資訊', default=' | 如何進入大門： \n | 管理方式： \n | 垃圾處理： \n | 其他限制問題： \n')
+	suite_note=models.TextField(verbose_name='補充資訊', default='如何進入大門： \n管理方式： \n垃圾處理： \n其他限制問題： \n')
 	class Meta:
 		verbose_name_plural='套房案件'
 	def __str__(self):
@@ -122,7 +122,7 @@ class SuitePhotoInfo(models.Model):
 	class Meta:
 		verbose_name_plural='照片資訊'
 	def __str__(self):
-		return self.home_title
+		return self.s_title
 
 class SuitePhoto(models.Model):
 	s_title=models.ForeignKey(SuitePhotoInfo, verbose_name='標題', on_delete=models.SET_NULL, blank=True, null=True, related_name='photo')
@@ -131,7 +131,7 @@ class SuitePhoto(models.Model):
 	class Meta:
 		verbose_name_plural='套房照片'
 	def image_tag(self):
-		if self.h_image :
-			return u'<img src="%s" width="300px" />' % self.h_image.url
+		if self.s_image :
+			return u'<img src="%s" width="300px" />' % self.s_image.url
 	image_tag.short_description = '圖片'
 	image_tag.allow_tags = True

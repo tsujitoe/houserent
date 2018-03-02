@@ -32,7 +32,7 @@ class Tenant(models.Model):
 	te_zone = models.CharField(verbose_name='想要區域', blank=True, null=True ,max_length=30)
 	te_money = models.CharField(verbose_name='預算', blank=True, null=True ,max_length=30)
 	te_in_date = models.DateField(verbose_name='何時入住', blank=True, null=True )
-	te_note = models.TextField(verbose_name='房客紀錄', default=' | 何時入住: \n | 預算多少: \n | 其他需求:', blank=True, null=True)
+	te_note = models.TextField(verbose_name='房客紀錄', default='何時入住: \n預算多少: \n其他需求:', blank=True, null=True)
 	
 	class Meta:
 		verbose_name_plural='房客資訊'

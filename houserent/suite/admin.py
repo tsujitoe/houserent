@@ -1,23 +1,25 @@
 from django.contrib import admin
+from .models import Suite, SuitePhotoInfo, SuitePhoto
+from nested_admin import NestedModelAdmin, NestedStackedInline, NestedTabularInline
 
-# Register your models here.
-from .models import Suite, SuitePhoto
 
-
-"""
-class RoomInline(admin.StackedInline):
-	model= Room
-	extra = 1
-
-class PhotoInline(admin.StackedInline):  
+class PhotoInline(NestedStackedInline):  
 	model = SuitePhoto
 	extra = 1
+	readonly_fields = ('image_tag',)
+
+@admin.register(SuitePhotoInfo)
+class SuitePhotoInfoadmin(NestedModelAdmin):
+	inlines = (PhotoInline, )
+	list_per_page = 20
+
+class SuitePhotoInfoInline(NestedStackedInline):
+	model = SuitePhotoInfo
+	extra = 1
+	inlines = (PhotoInline, )
 
 @admin.register(Suite)
-class Suiteadmin(admin.ModelAdmin):
+class Suiteadmin(NestedModelAdmin):
 	search_fields = ('suite_address',)
-	inlines = (RoomInline, PhotoInline, )
+	inlines = (SuitePhotoInfoInline, )
 	list_per_page = 20
-"""
-
-# admin.site.register(Suites)
