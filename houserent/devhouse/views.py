@@ -71,7 +71,7 @@ def get_work(request, pk):
 	# 開始要抓取圖片了!!
 	filename = dev_house.dev_name+'-'+dev_house.dev_address
 	try:
-		phone_img = soup.find("div", {"class":"infoTwo clearfix"}).find("img")['src'].split('//')[-1]
+		phone_img = soup.find("div", {"class":"j-phone infoTwo clearfix-new phone-hide"}).find("img")['src'].split('//')[-1]
 		img = 'https://'+phone_img
 		filename_phone = 'phone-'+filename
 		imgraw = requests.get(img, stream=True)
